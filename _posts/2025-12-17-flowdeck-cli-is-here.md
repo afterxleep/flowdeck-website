@@ -21,7 +21,7 @@ Interactive mode is the bread and butter. Launch `flowdeck -i` and stay there. B
 
 ![](/images/cli.png)
 
-AI agents can finally close the loop on Apple platforms. Claude Code, Codex, Aider—they all hit a wall when they need to build and test. Apple's tools output unstructured text that's nearly impossible to parse. FlowDeck gives them structured commands in, JSON out. I've already shipped Claude Code integration. More agents coming soon.
+AI agents can finally close the loop on Apple platforms. Claude Code, Codex, Aider; they all hit a wall when they need to build and test. Apple's tools output unstructured text that's nearly impossible to parse. FlowDeck gives them structured commands in, JSON out. I've already shipped Claude Code integration. More agents coming soon.
 
 CI/CD gets the same benefit. `--json` on every command. No more regex parsing `xcodebuild` output.
 
