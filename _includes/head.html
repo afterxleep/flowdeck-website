@@ -2,19 +2,27 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+
     {% if page.url == "/" %}
+    <!-- Homepage SEO -->
+    <title>FlowDeck - AI-Powered iOS & macOS Development for VS Code & Cursor</title>
     <meta name="description" content="Build iOS & macOS apps with AI in VS Code and Cursor. Professional Swift development with debugging, testing, and simulator support. Free VS Code extension. Install in 60 seconds.">
-    <meta name="keywords" content="FlowDeck, Cursor iOS development, VS Code iOS, Swift AI coding, iOS macOS development Cursor, Claude iOS development, Copilot Swift, Xcode alternative, Swift debugging VS Code, iOS simulator VS Code, SwiftUI Cursor, AI iOS coding, Cursor Swift extension, VS Code Swift extension, macOS development Cursor">
-    <meta name="author" content="Daniel (afterxleep)">
+    <meta name="keywords" content="FlowDeck, FlowDeck CLI, iOS CLI tools, macOS CLI tools, Swift CLI, iOS development CLI, macOS development CLI, AI iOS development, AI macOS development, Claude Code iOS, Claude Code Swift, AI agents iOS, AI agents macOS, AI agents Apple development, Cursor iOS development, VS Code iOS development, VS Code Swift, Windsurf iOS, Swift AI coding, Xcode alternative, iOS without Xcode, Swift debugging VS Code, LLDB VS Code, iOS simulator management, simulator control CLI, SwiftUI VS Code, SwiftUI Cursor, iOS unit testing CLI, iOS UI testing, xctest CLI, Swift Package Manager, SPM VS Code, iOS CI CD, Swift CI CD, xcodebuild JSON output, automated iOS builds, iOS device deployment, watchOS development, tvOS development, visionOS development, OSLog streaming, log streaming iOS, Swift autocomplete VS Code, Swift IntelliSense, Xcode project management, asset catalog VS Code, iOS build automation, terminal iOS development, Codex iOS, Aider Swift, AI pair programming Swift, machine readable xcodebuild, iOS development tools">
+    <meta name="author" content="Daniel Bernal">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ site.url }}">
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
     <meta property="og:site_name" content="FlowDeck">
     <meta property="og:title" content="FlowDeck - AI-Powered iOS & macOS Development for VS Code & Cursor">
     <meta property="og:description" content="Build iOS & macOS apps with AI in VS Code and Cursor. Professional Swift development with debugging, testing, and simulator support. Free VS Code extension. Install in 60 seconds.">
-    <meta property="og:image" content="{{ site.baseurl }}/assets/images/logo.png">
+    <meta property="og:image" content="{{ site.url }}/assets/images/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
@@ -22,9 +30,11 @@
     <meta name="twitter:creator" content="@afterxleep">
     <meta name="twitter:title" content="FlowDeck - AI-Powered iOS & macOS Development for VS Code & Cursor">
     <meta name="twitter:description" content="Build iOS & macOS apps with AI in VS Code and Cursor. Professional Swift development with debugging, testing, and simulator support. Free VS Code extension. Install in 60 seconds.">
-    <meta name="twitter:image" content="{{ site.baseurl }}/assets/images/logo.png">
+    <meta name="twitter:image" content="{{ site.url }}/assets/images/og-image.png">
     {% else %}
+    <!-- Other pages - use jekyll-seo-tag -->
     {% seo %}
+    <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }} - {{ site.tagline }}{% endif %}</title>
     {% endif %}
 
     <!-- Theme and Browser Config -->
@@ -37,6 +47,7 @@
     <!-- Preconnect for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 
     <!-- Favicons -->
@@ -44,11 +55,21 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ site.baseurl }}/assets/images/logo-small.png">
     <link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/assets/images/logo-small.png">
 
-    <title>{% if page.title %}{{ page.title }} - {{ site.title }}{% else %}{{ site.title }} - {{ site.description }}{% endif %}</title>
+    <!-- RSS Feed -->
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | absolute_url }}">
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6T1XG8PG61"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-6T1XG8PG61');
+    </script>
 
     <!-- MailerLite Universal -->
     <script>
@@ -62,4 +83,7 @@
             (window, document, 'script', 'https://assets.mailerlite.com/js/universal.js', 'ml');
         ml('account', '1824513');
     </script>
+
+    <!-- Structured Data (JSON-LD) -->
+    {% include structured-data.html %}
 </head>

@@ -1,0 +1,133 @@
+<!-- Structured Data (JSON-LD) for SEO -->
+{% if page.url == "/" %}
+<!-- Organization Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "FlowDeck",
+  "url": "{{ site.url }}",
+  "logo": "{{ site.url }}/assets/images/logo.png",
+  "description": "{{ site.description }}",
+  "sameAs": [
+    "https://twitter.com/afterxleep",
+    "https://github.com/flowdeck",
+    "https://discord.gg/VJ6nwb6Weg"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "url": "https://discord.gg/VJ6nwb6Weg"
+  }
+}
+</script>
+
+<!-- Software Application Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "FlowDeck",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "macOS",
+  "description": "Build iOS & macOS apps with AI in VS Code and Cursor. Professional Swift development with debugging, testing, and simulator support.",
+  "url": "{{ site.url }}",
+  "author": {
+    "@type": "Person",
+    "name": "Daniel Bernal"
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "FlowDeck CLI",
+      "price": "29",
+      "priceCurrency": "USD",
+      "priceValidUntil": "2025-12-31",
+      "availability": "https://schema.org/InStock"
+    },
+    {
+      "@type": "Offer",
+      "name": "FlowDeck Extension",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": "50"
+  }
+}
+</script>
+
+<!-- WebSite Schema with SearchAction -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "FlowDeck",
+  "url": "{{ site.url }}",
+  "description": "{{ site.description }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "FlowDeck"
+  }
+}
+</script>
+
+{% elsif page.layout == "post" %}
+<!-- Blog Post Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ page.title | escape }}",
+  "description": "{{ page.excerpt | strip_html | truncate: 160 | escape }}",
+  "url": "{{ page.url | absolute_url }}",
+  "datePublished": "{{ page.date | date_to_xmlschema }}",
+  "dateModified": "{{ page.date | date_to_xmlschema }}",
+  "author": {
+    "@type": "Person",
+    "name": "Daniel Bernal"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "FlowDeck",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ site.url }}/assets/images/logo.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ page.url | absolute_url }}"
+  }
+  {% if page.image %},
+  "image": "{{ site.url }}{{ page.image }}"
+  {% else %},
+  "image": "{{ site.url }}/assets/images/og-image.png"
+  {% endif %}
+}
+</script>
+
+{% else %}
+<!-- WebPage Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "{% if page.title %}{{ page.title | escape }}{% else %}{{ site.title }}{% endif %}",
+  "description": "{% if page.description %}{{ page.description | escape }}{% else %}{{ site.description }}{% endif %}",
+  "url": "{{ page.url | absolute_url }}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "FlowDeck",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ site.url }}/assets/images/logo.png"
+    }
+  }
+}
+</script>
+{% endif %}

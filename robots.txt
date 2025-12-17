@@ -1,4 +1,14 @@
+# Robots.txt for FlowDeck
 User-agent: *
 Allow: /
 
+# Disallow admin/system paths
+Disallow: /_site/
+Disallow: /vendor/
+Disallow: /node_modules/
+
+# Sitemap location
 Sitemap: https://flowdeck.studio/sitemap.xml
+
+# Host
+Host: https://flowdeck.studio

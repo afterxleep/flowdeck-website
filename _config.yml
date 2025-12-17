@@ -1,10 +1,37 @@
 # Site Settings
 title: "FlowDeck"
-description: "Build iOS & macOS apps with AI in VS Code and Cursor"
-url: "https://test.flowdeck.studio"
+tagline: "AI-Powered iOS & macOS Development"
+description: "Build iOS & macOS apps with AI in VS Code, Cursor, and Windsurf. CLI and extension for Swift development with debugging, testing, simulator control, and AI agent integration. Professional iOS development without Xcode."
+url: "https://flowdeck.studio"
 baseurl: ""
-author: "Daniel (afterxleep)"
-twitter_username: afterxleep
+lang: en_US
+
+# Author/Organization
+author:
+  name: "Daniel Bernal"
+  twitter: "afterxleep"
+  url: "https://flowdeck.studio"
+
+# Social/SEO
+twitter:
+  username: afterxleep
+  card: summary_large_image
+social:
+  name: FlowDeck
+  links:
+    - https://twitter.com/afterxleep
+    - https://github.com/flowdeck
+    - https://discord.gg/VJ6nwb6Weg
+
+# Default image for social sharing
+defaults_image: /assets/images/og-image.png
+
+# Google Analytics
+google_analytics: G-6T1XG8PG61
+
+# Webmaster verifications (add your verification codes here)
+# google_site_verification: ""
+# bing_site_verification: ""
 
 # Build Settings
 markdown: kramdown
@@ -26,10 +53,16 @@ defaults:
     values:
       layout: "post"
       author: "Daniel"
+      image: /assets/images/og-image.png
   - scope:
       path: "pages"
     values:
       layout: "page"
+      image: /assets/images/og-image.png
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/og-image.png
 
 # Plugins
 plugins:
