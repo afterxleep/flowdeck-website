@@ -40,12 +40,6 @@ body_class: blog-main whats-new-page
                     <i class="far fa-calendar"></i>
                     {{ post.date | date: "%B %d, %Y" }}
                   </time>
-                  {% if post.category %}
-                  <span class="post-category">
-                    <i class="far fa-folder"></i>
-                    {{ post.category }}
-                  </span>
-                  {% endif %}
                 </div>
 
                 <h2 class="post-title">
