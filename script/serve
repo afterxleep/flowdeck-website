@@ -1,0 +1,249 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+pidfile="$root/.jekyll-serve.pid"
+
+port="${JEKYLL_PORT:-4000}"
+host="${JEKYLL_HOST:-127.0.0.1}"
+livereload_port="${JEKYLL_LIVERELOAD_PORT:-35729}"
+
+usage() {
+  cat <<'EOF'
+Usage: script/serve [start|stop|restart|status] [--detach]
+
+Environment:
+  JEKYLL_HOST=127.0.0.1
+  JEKYLL_PORT=4000
+  JEKYLL_LIVERELOAD=1            (set 0 to disable)
+  JEKYLL_LIVERELOAD_PORT=35729
+  JEKYLL_FORCE_POLLING=1
+  JEKYLL_DRAFTS=1
+  JEKYLL_INCREMENTAL=1
+  JEKYLL_TRACE=1
+EOF
+}
+
+is_running_pid() {
+  local pid="$1"
+  [[ "$pid" =~ ^[0-9]+$ ]] || return 1
+  kill -0 "$pid" 2>/dev/null
+}
+
+pid_matches_repo_jekyll() {
+  local pid="$1"
+  local cmd
+  cmd="$(ps -p "$pid" -o command= 2>/dev/null || true)"
+  [[ -n "$cmd" ]] || return 1
+  [[ "$cmd" == *"jekyll serve"* ]] || return 1
+  if [[ "$cmd" == *"$root"* ]]; then
+    return 0
+  fi
+
+  if command -v lsof >/dev/null 2>&1; then
+    local cwd
+    cwd="$(lsof -a -p "$pid" -d cwd -Fn 2>/dev/null | sed -n 's/^n//p' | head -n1 || true)"
+    [[ "$cwd" == "$root" ]]
+    return $?
+  fi
+
+  return 1
+}
+
+port_listener_pids() {
+  if ! command -v lsof >/dev/null 2>&1; then
+    return 0
+  fi
+  lsof -nP -iTCP:"$port" -sTCP:LISTEN -t 2>/dev/null || true
+}
+
+repo_jekyll_pids() {
+  if ! command -v lsof >/dev/null 2>&1; then
+    return 0
+  fi
+
+  ps ax -o pid= -o command= \
+    | grep -E '(^|[[:space:]]|/)jekyll[[:space:]]+serve([[:space:]]|$)' \
+    | while read -r pid _; do
+        if pid_matches_repo_jekyll "$pid"; then
+          echo "$pid"
+        fi
+      done
+}
+
+start() {
+  local detach="${1:-0}"
+
+  local running_pids
+  running_pids="$(repo_jekyll_pids | tr '\n' ' ' | xargs echo || true)"
+  if [[ -n "$running_pids" ]]; then
+    echo "Jekyll already running for this repo (pid(s): $running_pids)."
+    return 0
+  fi
+
+  if [[ -f "$pidfile" ]]; then
+    local existing_pid
+    existing_pid="$(cat "$pidfile" 2>/dev/null || true)"
+    if is_running_pid "$existing_pid" && pid_matches_repo_jekyll "$existing_pid"; then
+      echo "Jekyll already running (pid $existing_pid) at http://$host:$port"
+      return 0
+    fi
+    rm -f "$pidfile"
+  fi
+
+  local pids
+  pids="$(port_listener_pids | tr '\n' ' ' | xargs echo || true)"
+  if [[ -n "$pids" ]]; then
+    for pid in $pids; do
+      if pid_matches_repo_jekyll "$pid"; then
+        echo "Jekyll already running (pid $pid) at http://$host:$port"
+        return 0
+      fi
+    done
+    echo "Port $port is already in use (pids: $pids)."
+    return 1
+  fi
+
+  local args=(
+    serve
+    --host "$host"
+    --port "$port"
+    --watch
+  )
+
+  if [[ "${JEKYLL_LIVERELOAD:-1}" != "0" ]]; then
+    args+=(--livereload --livereload-port "$livereload_port")
+  fi
+  if [[ "${JEKYLL_FORCE_POLLING:-0}" == "1" ]]; then
+    args+=(--force_polling)
+  fi
+  if [[ "${JEKYLL_DRAFTS:-0}" == "1" ]]; then
+    args+=(--drafts)
+  fi
+  if [[ "${JEKYLL_INCREMENTAL:-0}" == "1" ]]; then
+    args+=(--incremental)
+  fi
+  if [[ "${JEKYLL_TRACE:-0}" == "1" ]]; then
+    args+=(--trace)
+  fi
+
+  cd "$root"
+  if [[ "$detach" == "1" ]]; then
+    local logfile="$root/.jekyll-serve.log"
+    nohup bundle exec jekyll "${args[@]}" >"$logfile" 2>&1 &
+    local child_pid="$!"
+    echo "$child_pid" >"$pidfile"
+    echo "Serving at http://$host:$port (pid $child_pid)"
+    echo "Logs: $logfile"
+    return 0
+  fi
+
+  bundle exec jekyll "${args[@]}" &
+  local child_pid="$!"
+  echo "$child_pid" >"$pidfile"
+
+  cleanup() {
+    rm -f "$pidfile"
+  }
+
+  stop_child() {
+    if is_running_pid "$child_pid"; then
+      kill "$child_pid" 2>/dev/null || true
+    fi
+  }
+
+  trap cleanup EXIT
+  trap 'stop_child; exit 130' INT
+  trap 'stop_child; exit 143' TERM
+
+  echo "Serving at http://$host:$port (pid $child_pid)"
+  wait "$child_pid"
+}
+
+stop() {
+  local stopped_any=0
+
+  if [[ -f "$pidfile" ]]; then
+    local pid
+    pid="$(cat "$pidfile" 2>/dev/null || true)"
+    rm -f "$pidfile"
+    if is_running_pid "$pid" && pid_matches_repo_jekyll "$pid"; then
+      kill "$pid" 2>/dev/null || true
+      stopped_any=1
+    fi
+  fi
+
+  local pids
+  pids="$(repo_jekyll_pids | tr '\n' ' ' | xargs echo || true)"
+  if [[ -n "$pids" ]]; then
+    for pid in $pids; do
+      kill "$pid" 2>/dev/null || true
+      stopped_any=1
+    done
+  fi
+
+  if [[ "$stopped_any" -eq 0 ]]; then
+    echo "No running Jekyll server found for this repo."
+    return 0
+  fi
+
+  for _ in {1..50}; do
+    pids="$(repo_jekyll_pids | tr '\n' ' ' | xargs echo || true)"
+    if [[ -z "$pids" ]]; then
+      echo "Stopped."
+      return 0
+    fi
+    sleep 0.1
+  done
+
+  echo "Still running (pid(s): $pids). Try: kill -9 <pid>"
+  return 1
+}
+
+status() {
+  if [[ -f "$pidfile" ]]; then
+    local pid
+    pid="$(cat "$pidfile" 2>/dev/null || true)"
+    if is_running_pid "$pid" && pid_matches_repo_jekyll "$pid"; then
+      echo "Running (pid $pid) at http://$host:$port"
+      return 0
+    fi
+  fi
+
+  local running_pids
+  running_pids="$(repo_jekyll_pids | tr '\n' ' ' | xargs echo || true)"
+  if [[ -n "$running_pids" ]]; then
+    echo "Running for this repo (pid(s): $running_pids)."
+    return 0
+  fi
+
+  local pids
+  pids="$(port_listener_pids | tr '\n' ' ' | xargs echo || true)"
+  if [[ -n "$pids" ]]; then
+    echo "Port $port is in use (pids: $pids), but no matching pidfile entry."
+    return 1
+  fi
+
+  echo "Not running."
+}
+
+cmd="${1:-start}"
+shift || true
+
+detach=0
+while [[ "${1:-}" == --* ]]; do
+  case "${1:-}" in
+    --detach) detach=1; shift ;;
+    -h|--help) usage; exit 0 ;;
+    *) echo "Unknown option: ${1:-}" >&2; usage >&2; exit 2 ;;
+  esac
+done
+
+case "$cmd" in
+  start) start "$detach" ;;
+  stop) stop ;;
+  restart) stop || true; start "$detach" ;;
+  status) status ;;
+  -h|--help|help) usage ;;
+  *) echo "Unknown command: $cmd" >&2; usage >&2; exit 2 ;;
+esac

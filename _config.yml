@@ -48,6 +48,6 @@ exclude:
   - .DS_Store
 
 # Site-wide variables
-checkout_url_yearly: "https://store.flowdeck.studio/buy/85ab42b5-7ba9-4e2b-beb9-a99c209ee7b4?checkout%5Bdiscount_code%5D=EARLY"
+checkout_url_yearly: "https://store.flowdeck.studio/buy/e6fa7284-4c29-4b3e-8c76-e3b46c35c52c"
 docs_url: "https://docs.flowdeck.studio"
 discord_url: "https://discord.gg/VJ6nwb6Weg"

@@ -4253,7 +4253,7 @@ p {
 }
 
 .pricing-card .price .price-old {
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     font-weight: 400;
     color: #52525b;
     display: block;
@@ -5076,7 +5076,9 @@ p {
 .hero-launch-price .price-old {
     color: #71717a;
     text-decoration: line-through;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
 .hero-launch-price strong {
@@ -5192,7 +5194,7 @@ p {
 
 .price-old {
     display: block;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     font-weight: 400;
     color: #52525b;
     text-decoration: line-through;
