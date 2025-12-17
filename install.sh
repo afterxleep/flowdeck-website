@@ -128,22 +128,11 @@ download() {
 
 # Install the binary
 install_binary() {
-    # Create install directory if needed
-    if [ ! -d "$INSTALL_DIR" ]; then
-        info "Creating directory $INSTALL_DIR..."
-        mkdir -p "$INSTALL_DIR"
-    fi
-
-    # Check for existing installation
-    if [ -f "$INSTALL_DIR/$BINARY_NAME" ]; then
-        OLD_VERSION=$("$INSTALL_DIR/$BINARY_NAME" --version 2>/dev/null | head -1 || echo "unknown")
-        if [ "$OLD_VERSION" != "$VERSION" ] && [ "$OLD_VERSION" != "unknown" ]; then
-            info "Upgrading from ${OLD_VERSION} to ${VERSION}..."
-        fi
-    fi
+    # Create install directory if needed (silently)
+    mkdir -p "$INSTALL_DIR"
 
     # Install binary
-    info "Installing to $INSTALL_DIR/$BINARY_NAME..."
+    info "Installing..."
     cp "$DOWNLOADED_BINARY" "$INSTALL_DIR/$BINARY_NAME"
     chmod 755 "$INSTALL_DIR/$BINARY_NAME"
     xattr -d com.apple.quarantine "$INSTALL_DIR/$BINARY_NAME" 2>/dev/null || true
@@ -205,17 +194,18 @@ print_success() {
     echo ""
     success "FlowDeck CLI ${VERSION} installed successfully!"
     echo ""
+    echo "Path: ~/.local/bin/flowdeck"
+    echo ""
 
     if ! check_path; then
         suggest_path_config
-    else
-        echo "Get started:"
-        echo ""
-        printf "  ${BOLD}flowdeck --help${NC}\n"
-        printf "  ${BOLD}flowdeck -i${NC}          # Interactive mode\n"
-        echo ""
     fi
 
+    echo "Get started:"
+    echo ""
+    printf "  ${BOLD}flowdeck --help${NC}\n"
+    printf "  ${BOLD}flowdeck -i${NC}          # Interactive mode\n"
+    echo ""
     echo "Documentation: https://docs.flowdeck.studio/cli/"
     echo ""
 }
