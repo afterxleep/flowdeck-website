@@ -3,15 +3,17 @@
 # Usage: curl -sSL https://flowdeck.studio/install.sh | sh
 #
 # Environment variables:
-#   FLOWDECK_INSTALL_DIR - Installation directory (default: ~/.local/bin)
+#   FLOWDECK_INSTALL_DIR - Installation directory (overrides default)
 #   FLOWDECK_VERSION     - Specific version to install (default: latest)
 
 set -e
 
 # Configuration
 DOWNLOAD_BASE="https://s3.eu-north-1.amazonaws.com/flowdeck.public/releases/cli"
-INSTALL_DIR="${FLOWDECK_INSTALL_DIR:-$HOME/.local/bin}"
+DEFAULT_INSTALL_DIR="/usr/local/bin"
+FALLBACK_INSTALL_DIR="$HOME/.local/bin"
 BINARY_NAME="flowdeck"
+NEEDS_SUDO=false
 
 # Colors (disabled if not a terminal)
 if [ -t 1 ]; then
@@ -20,6 +22,7 @@ if [ -t 1 ]; then
     YELLOW='\033[0;33m'
     BLUE='\033[0;34m'
     BOLD='\033[1m'
+    DIM='\033[2m'
     NC='\033[0m'
 else
     RED=''
@@ -27,6 +30,7 @@ else
     YELLOW=''
     BLUE=''
     BOLD=''
+    DIM=''
     NC=''
 fi
 
@@ -90,11 +94,53 @@ get_version() {
     fi
 }
 
-# Download and install
-install() {
+# Determine installation directory
+determine_install_dir() {
+    # If user specified a directory via env var, use that
+    if [ -n "$FLOWDECK_INSTALL_DIR" ]; then
+        INSTALL_DIR="$FLOWDECK_INSTALL_DIR"
+        # Check if we need sudo for custom dir
+        if [ -d "$INSTALL_DIR" ] && [ ! -w "$INSTALL_DIR" ]; then
+            NEEDS_SUDO=true
+        fi
+        return
+    fi
+
+    # Check if we can write to /usr/local/bin directly
+    if [ -w "$DEFAULT_INSTALL_DIR" ]; then
+        INSTALL_DIR="$DEFAULT_INSTALL_DIR"
+        return
+    fi
+
+    # /usr/local/bin exists but needs sudo, or doesn't exist
+    echo ""
+    printf "${BOLD}Where would you like to install FlowDeck?${NC}\n"
+    echo ""
+    printf "  ${BOLD}1${NC}) /usr/local/bin ${DIM}(recommended, requires sudo)${NC}\n"
+    printf "  ${BOLD}2${NC}) ~/.local/bin ${DIM}(no sudo, may require PATH configuration)${NC}\n"
+    echo ""
+    printf "Choice [1]: "
+
+    read -r choice
+    choice="${choice:-1}"
+
+    case "$choice" in
+        2)
+            INSTALL_DIR="$FALLBACK_INSTALL_DIR"
+            ;;
+        *)
+            INSTALL_DIR="$DEFAULT_INSTALL_DIR"
+            NEEDS_SUDO=true
+            ;;
+    esac
+    echo ""
+}
+
+# Download the binary
+download() {
     DOWNLOAD_URL="${DOWNLOAD_BASE}/${VERSION}/flowdeck-${OS}-${ARCH}.tar.gz"
 
-    info "Downloading FlowDeck CLI ${VERSION} for ${OS}-${ARCH}..."
+    info "Downloading FlowDeck CLI ${VERSION}..."
 
     # Create temp directory
     TMP_DIR=$(mktemp -d)
@@ -111,10 +157,19 @@ install() {
     info "Extracting..."
     tar -xzf "$TMP_DIR/flowdeck.tar.gz" -C "$TMP_DIR"
 
+    DOWNLOADED_BINARY="$TMP_DIR/$BINARY_NAME"
+}
+
+# Install the binary
+install_binary() {
     # Create install directory if needed
     if [ ! -d "$INSTALL_DIR" ]; then
         info "Creating directory $INSTALL_DIR..."
-        mkdir -p "$INSTALL_DIR"
+        if [ "$NEEDS_SUDO" = true ]; then
+            sudo mkdir -p "$INSTALL_DIR"
+        else
+            mkdir -p "$INSTALL_DIR"
+        fi
     fi
 
     # Check for existing installation
@@ -127,11 +182,13 @@ install() {
 
     # Install binary
     info "Installing to $INSTALL_DIR/$BINARY_NAME..."
-    mv "$TMP_DIR/$BINARY_NAME" "$INSTALL_DIR/$BINARY_NAME"
-    chmod +x "$INSTALL_DIR/$BINARY_NAME"
-
-    # Remove quarantine attribute (macOS) - this is why we use our own installer
-    if [ "$OS" = "darwin" ]; then
+    if [ "$NEEDS_SUDO" = true ]; then
+        sudo cp "$DOWNLOADED_BINARY" "$INSTALL_DIR/$BINARY_NAME"
+        sudo chmod 755 "$INSTALL_DIR/$BINARY_NAME"
+        sudo xattr -d com.apple.quarantine "$INSTALL_DIR/$BINARY_NAME" 2>/dev/null || true
+    else
+        cp "$DOWNLOADED_BINARY" "$INSTALL_DIR/$BINARY_NAME"
+        chmod 755 "$INSTALL_DIR/$BINARY_NAME"
         xattr -d com.apple.quarantine "$INSTALL_DIR/$BINARY_NAME" 2>/dev/null || true
     fi
 }
@@ -173,12 +230,12 @@ suggest_path_config() {
     echo "Add this to ${RC_FILE}:"
     echo ""
     if [ "$SHELL_NAME" = "fish" ]; then
-        printf "  ${BOLD}set -gx PATH \$HOME/.local/bin \$PATH${NC}\n"
+        printf "  ${BOLD}fish_add_path %s${NC}\n" "$INSTALL_DIR"
     else
-        printf "  ${BOLD}export PATH=\"\$HOME/.local/bin:\$PATH\"${NC}\n"
+        printf "  ${BOLD}export PATH=\"%s:\$PATH\"${NC}\n" "$INSTALL_DIR"
     fi
     echo ""
-    echo "Then run:"
+    echo "Then restart your terminal or run:"
     echo ""
     printf "  ${BOLD}source ${RC_FILE}${NC}\n"
     echo ""
@@ -207,7 +264,7 @@ print_success() {
         echo ""
     fi
 
-    echo "Documentation: https://flowdeck.dev/docs"
+    echo "Documentation: https://docs.flowdeck.studio/cli/"
     echo ""
 }
 
@@ -221,7 +278,9 @@ main() {
     detect_os
     detect_arch
     get_version
-    install
+    determine_install_dir
+    download
+    install_binary
     verify_install
     print_success
 }
