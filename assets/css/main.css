@@ -3596,11 +3596,12 @@ p {
     margin-bottom: 1.5rem;
 }
 
-.cta-buttons {
+.widget-cta .cta-buttons {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
-    margin-bottom: 1.5rem;
+    /* Override the global `.cta-buttons { margin: 2rem 0; }` used on full-page CTAs */
+    margin: 0;
 }
 
 .btn-block {
