@@ -1,6 +1,6 @@
 #!/bin/sh
 # FlowDeck CLI Installer
-# Usage: curl -sSL https://flowdeck.studio/install.sh | sh
+# Usage: curl -sSL https://flowdeck.studio/installer/cli.sh | sh
 #
 # Environment variables:
 #   FLOWDECK_INSTALL_DIR - Installation directory (overrides default)
