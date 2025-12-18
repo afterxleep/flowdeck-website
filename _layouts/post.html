@@ -26,6 +26,15 @@ layout: default
       </div>
     </header>
 
+    <!-- Featured Image -->
+    {% if page.featured_image %}
+    <div class="single-post-featured-image">
+      <div class="container">
+        <img src="{{ page.featured_image }}" alt="{{ page.title }}">
+      </div>
+    </div>
+    {% endif %}
+
     <!-- Post Content -->
     <div class="single-post-content">
       <div class="container">
