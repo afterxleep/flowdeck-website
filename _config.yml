@@ -50,6 +50,7 @@ defaults:
     values:
       layout: "post"
       author: "Daniel"
+      image: /assets/images/logo.png
   - scope:
       path: "pages"
     values:

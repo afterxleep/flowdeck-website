@@ -102,8 +102,8 @@
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "{{ page.url | absolute_url }}"
-  }{% if page.image %},
-  "image": "{{ site.url }}{{ page.image }}"{% endif %}
+  },
+  "image": "{{ site.url }}{% if page.image %}{{ page.image }}{% else %}/assets/images/logo.png{% endif %}"
 }
 </script>
 
