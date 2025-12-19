@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Hello Claude Code Plugin"
+title: "FlowDeck now has a Claude Code Plugin"
 date: 2025-12-18 10:00:00
 category: whats-new
 tags: [claude-code, plugin, release]
@@ -20,7 +20,7 @@ Two commands to install:
 
 Claude Code knows `xcodebuild`. It's been trained on years of Stack Overflow answers and Apple documentation. When you ask it to build an iOS app, that's what it reaches for.
 
-The plugin changes that. Now Claude uses FlowDeck by default—and more importantly, it knows *why* to use FlowDeck. The plugin teaches Claude the debug loop: run the app, stream logs, capture screenshots. It understands that `flowdeck context --json` gives it everything it needs about your project without parsing Xcode files.
+The plugin changes that. Now Claude uses FlowDeck by default, and more importantly, it knows *why* to use FlowDeck. The plugin teaches Claude the debug loop: run the app, stream logs, capture screenshots. It understands that `flowdeck context --json` gives it everything it needs about your project without parsing Xcode files.
 
 It also blocks xcodebuild, xcrun simctl, and xcrun devicectl. Not because they don't work, but because you have something better installed.
 
