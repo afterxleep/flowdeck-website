@@ -204,6 +204,22 @@ p {
     transform: translateY(-1px);
 }
 
+.btn-nav-support {
+    background: linear-gradient(135deg, #9333ea, #7c3aed);
+    color: #fff !important;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.btn-nav-support:hover {
+    background: linear-gradient(135deg, #a855f7, #8b5cf6);
+    transform: translateY(-1px);
+}
+
 .mobile-menu-btn {
     display: none;
     background: none;
@@ -718,7 +734,7 @@ p {
 /* ================================================================ */
 
 .cta {
-    padding: 2rem 0;
+    padding: 2rem 0 5rem;
     background:
         radial-gradient(ellipse at center, rgba(59, 130, 246, 0.1), transparent 70%),
         #0a0a0a;
@@ -3787,11 +3803,15 @@ p {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
-    align-items: center;
+    align-items: start;
 }
 
 .hero-cli .hero-content {
     text-align: left;
+}
+
+.hero-cli .hero-visual {
+    margin-top: 0;
 }
 
 .hero-cli .hero-cta-primary {
@@ -3840,6 +3860,8 @@ p {
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     max-width: 520px;
     width: 100%;
+    margin-top: 20px;
+    height: 400px;
 }
 
 .terminal-header {
@@ -3862,8 +3884,7 @@ p {
     font-size: 0.85rem;
     line-height: 1.6;
     color: #e4e4e7;
-    min-height: 400px;
-    height: 400px;
+    height: calc(100% - 40px);
     overflow-y: auto;
     white-space: pre-wrap;
     word-break: break-word;
@@ -3970,20 +3991,30 @@ p {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 2rem;
+    list-style: none !important;
+    list-style-type: none !important;
+    padding: 0 !important;
+    margin: 0;
 }
 
+.extension-features-inline li,
 .extension-features-inline span {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: #71717a;
-    font-size: 0.9rem;
+    color: #a1a1aa;
+    font-size: 0.95rem;
+    list-style: none;
+}
+
+.extension-features-inline li::before {
+    display: none;
 }
 
 .extension-features-inline i {
     color: #10b981;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
 }
 
 @media (max-width: 600px) {
@@ -5296,4 +5327,732 @@ p {
         text-align: center;
         gap: 1.5rem;
     }
+}
+
+/* ================================================================ */
+/* INSTALL COMMAND BLOCK                                           */
+/* ================================================================ */
+
+.install-command-block {
+    margin: 2rem 0 0.5rem;
+}
+
+.install-command {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 0.75rem;
+    padding: 1rem 1.25rem;
+    font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+    position: relative;
+}
+
+.install-command code {
+    flex: 1;
+    color: #e4e4e7;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    overflow-x: auto;
+    background: transparent;
+    padding: 0;
+}
+
+.install-command-sm {
+    padding: 0.75rem 1rem;
+}
+
+.install-command-sm code {
+    font-size: 0.8rem;
+}
+
+.install-helper {
+    color: #71717a;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.install-helper code {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+    font-size: 0.85rem;
+    color: #60a5fa;
+}
+
+.hero-trial-info {
+    color: #a1a1aa;
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+}
+
+/* ================================================================ */
+/* COPY BUTTON                                                      */
+/* ================================================================ */
+
+.copy-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    color: #a1a1aa;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 0.85rem;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.copy-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.copy-btn i {
+    font-size: 0.9rem;
+}
+
+.copy-tooltip {
+    position: absolute;
+    top: -2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #10b981;
+    color: #fff;
+    padding: 0.4rem 0.75rem;
+    border-radius: 0.375rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    pointer-events: none;
+}
+
+.copy-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #10b981;
+}
+
+.copy-tooltip.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.copy-btn-block {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ================================================================ */
+/* PRODUCT CLARIFICATION SECTION                                    */
+/* ================================================================ */
+
+.product-clarification {
+    padding: 4rem 0;
+    background: linear-gradient(180deg, rgba(59, 130, 246, 0.03) 0%, transparent 100%);
+}
+
+.product-clarification header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.product-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+/* Limit install command width within product cards */
+.product-card .install-command {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.product-card .install-command code {
+    white-space: nowrap;
+    overflow-x: auto;
+    display: block;
+    max-width: calc(100% - 50px);
+}
+
+.product-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1rem;
+    padding: 2rem;
+    position: relative;
+}
+
+.product-card-cli {
+    border-color: rgba(147, 51, 234, 0.3);
+    background: rgba(147, 51, 234, 0.03);
+}
+
+.product-card-extension {
+    border-color: rgba(59, 130, 246, 0.3);
+    background: rgba(59, 130, 246, 0.03);
+}
+
+.product-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 2rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+.badge-pro {
+    background: rgba(147, 51, 234, 0.15);
+    border: 1px solid rgba(147, 51, 234, 0.4);
+    color: #a78bfa;
+}
+
+.badge-extension {
+    background: rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.4);
+    color: #60a5fa;
+}
+
+.product-card h3 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    padding-top: 0;
+}
+
+.product-tagline {
+    color: #a1a1aa;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.product-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+}
+
+.product-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #e4e4e7;
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+}
+
+.product-features li i {
+    color: #10b981;
+    font-size: 0.8rem;
+}
+
+.product-cta {
+    margin-top: auto;
+}
+
+.product-cta-stacked {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.product-cta-stacked .btn {
+    width: 100%;
+    justify-content: center;
+}
+
+.product-note {
+    text-align: center;
+    color: #a1a1aa;
+    font-size: 1.1rem;
+    margin-top: 2.5rem;
+    font-weight: 500;
+}
+
+/* ================================================================ */
+/* CONDENSED EXTENSION SECTION                                      */
+/* ================================================================ */
+
+.extension-section,
+.extension-condensed {
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.extension-section header,
+.extension-condensed header {
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    text-align: center;
+}
+
+.extension-section header .section-badge {
+    margin-bottom: 1.5rem;
+}
+
+.extension-section header .section-title {
+    margin-bottom: 1rem;
+}
+
+.extension-section header .section-subtitle {
+    margin-bottom: 0;
+}
+
+.extension-cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+/* ================================================================ */
+/* QUICK START SECTION                                              */
+/* ================================================================ */
+
+.quick-start {
+    padding: 5rem 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(59, 130, 246, 0.03) 50%, transparent 100%);
+}
+
+.quick-start header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.quickstart-terminal {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #0d0d0d;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.quickstart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.quickstart-code {
+    padding: 1.5rem;
+    margin: 0;
+    font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+    font-size: 0.9rem;
+    line-height: 1.8;
+    color: #e4e4e7;
+    overflow-x: auto;
+    white-space: pre;
+}
+
+.quickstart-code .comment {
+    color: #6b7280;
+}
+
+.quickstart-code .cmd {
+    color: #10b981;
+}
+
+.quickstart-code .cmd-highlight {
+    color: #a78bfa;
+}
+
+.quickstart-docs-link {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+}
+
+.quickstart-docs-link .btn {
+    font-size: 1rem;
+}
+
+/* ================================================================ */
+/* PRICING UPDATES                                                  */
+/* ================================================================ */
+
+.pricing-grid-cli-first {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.pricing-card-large {
+    padding: 2.5rem;
+}
+
+.pricing-card-secondary {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.trial-note {
+    color: #10b981;
+    font-size: 0.9rem;
+    text-align: center;
+    margin: 1rem 0 1.5rem;
+    font-weight: 500;
+}
+
+.install-command-pricing {
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.install-command-pricing code {
+    white-space: nowrap;
+    overflow-x: auto;
+    display: block;
+}
+
+.extension-buttons-pricing {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 1.5rem 0;
+}
+
+.extension-buttons-pricing .btn {
+    width: 100%;
+    justify-content: center;
+}
+
+.pricing-team-note {
+    text-align: center;
+    color: #71717a;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+}
+
+.pricing-team-note a {
+    color: #60a5fa;
+}
+
+/* Pricing Card Alignment */
+.pricing-grid-two {
+    align-items: stretch;
+}
+
+.pricing-grid-two .pricing-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.pricing-grid-two .pricing-card .card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.pricing-grid-two .pricing-card .card-header h3 {
+    margin-bottom: 0.5rem;
+}
+
+/* Extension card - add space where strikethrough would be */
+.pricing-grid-two .pricing-card-secondary .card-header .price-display {
+    margin-top: 1.5rem; /* Space to align with CLI price that has strikethrough above */
+}
+
+/* Make the CTA button full width */
+.pricing-cta-btn {
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+/* Align the trial note and buttons section */
+.pricing-grid-two .pricing-card .trial-note {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Extension buttons need same height as CLI trial-note + button */
+.pricing-grid-two .extension-buttons-pricing {
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.75rem;
+    margin: 1rem 0;
+}
+
+/* ================================================================ */
+/* ABOUT SECTION CONDENSED                                          */
+/* ================================================================ */
+
+.note-content-condensed {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.note-content-condensed p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.note-content-condensed .note-signature {
+    margin-top: 1.5rem;
+    font-size: 1rem;
+}
+
+.note-content-condensed .note-signature a {
+    color: #60a5fa;
+    margin: 0 0.25rem;
+}
+
+/* ================================================================ */
+/* FINAL CTA UPDATES                                                */
+/* ================================================================ */
+
+.cta .cta-content {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.install-command-cta {
+    margin: 2rem auto;
+    max-width: 550px;
+}
+
+.install-command-cta .install-command {
+    background: rgba(0, 0, 0, 0.8);
+    border-color: rgba(147, 51, 234, 0.3);
+}
+
+.cta-trial-info {
+    color: #a1a1aa;
+    font-size: 0.95rem;
+}
+
+/* ================================================================ */
+/* RESPONSIVE UPDATES                                               */
+/* ================================================================ */
+
+@media (max-width: 768px) {
+    .product-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .product-card-cli {
+        order: -1;
+    }
+
+    .install-command {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .install-command code {
+        width: 100%;
+        font-size: 0.8rem;
+    }
+
+    .copy-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .pricing-grid-cli-first {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-card-large {
+        order: -1;
+    }
+
+    .quickstart-code {
+        font-size: 0.75rem;
+        padding: 1rem;
+    }
+
+    .extension-cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .extension-cta-buttons .btn {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+@media (max-width: 480px) {
+    .install-command-sm code {
+        font-size: 0.7rem;
+    }
+
+    .product-card {
+        padding: 1.5rem;
+    }
+
+    .quickstart-terminal {
+        border-radius: 0.5rem;
+    }
+
+    .copy-btn-block {
+        position: static;
+        margin-top: 0.5rem;
+    }
+
+    .quickstart-header {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: flex-start;
+    }
+}
+
+/* ================================================================ */
+/* INSTALL MODAL                                                    */
+/* ================================================================ */
+
+.install-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    padding: 1rem;
+}
+
+.install-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.install-modal {
+    background: #18181b;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 2rem;
+    max-width: 550px;
+    width: 100%;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.install-modal-overlay.active .install-modal {
+    transform: translateY(0);
+}
+
+.install-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: #71717a;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.install-modal-close:hover {
+    color: #fff;
+}
+
+.install-modal-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.install-modal-title {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    padding-top: 0;
+}
+
+.install-modal-subtitle {
+    color: #a1a1aa;
+    font-size: 0.95rem;
+}
+
+.install-modal-content {
+    text-align: center;
+}
+
+.install-command-modal {
+    background: rgba(0, 0, 0, 0.5);
+    border-color: rgba(147, 51, 234, 0.3);
+    margin-bottom: 1rem;
+}
+
+.install-modal-helper {
+    color: #71717a;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.install-modal-helper code {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-family: 'SF Mono', 'Monaco', 'Menlo', 'Consolas', monospace;
+    font-size: 0.85rem;
+    color: #a78bfa;
+}
+
+.install-modal-info {
+    color: #a1a1aa;
+    font-size: 0.85rem;
+    margin-top: 1rem;
+}
+
+/* Button Pro Style */
+.btn-pro {
+    background: linear-gradient(135deg, #9333ea, #7c3aed);
+    color: white;
+    box-shadow: 0 4px 14px 0 rgba(147, 51, 234, 0.25);
+}
+
+.btn-pro:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px 0 rgba(147, 51, 234, 0.35);
+    color: white;
 }

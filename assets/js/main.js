@@ -635,3 +635,113 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start animation immediately
     typeNextLine();
 });
+
+// ================================================================
+// COPY BUTTON FUNCTIONALITY
+// ================================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    const copyButtons = document.querySelectorAll('.copy-btn');
+
+    copyButtons.forEach(button => {
+        button.addEventListener('click', async () => {
+            const textToCopy = button.getAttribute('data-copy');
+            const tooltip = button.querySelector('.copy-tooltip');
+
+            try {
+                await navigator.clipboard.writeText(textToCopy);
+
+                // Show tooltip
+                tooltip.classList.add('show');
+
+                // Change icon temporarily
+                const icon = button.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-copy');
+                    icon.classList.add('fa-check');
+                }
+
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    tooltip.classList.remove('show');
+                    if (icon) {
+                        icon.classList.remove('fa-check');
+                        icon.classList.add('fa-copy');
+                    }
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy:', err);
+                // Fallback for older browsers
+                const textarea = document.createElement('textarea');
+                textarea.value = textToCopy;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                try {
+                    document.execCommand('copy');
+                    tooltip.classList.add('show');
+                    setTimeout(() => tooltip.classList.remove('show'), 2000);
+                } catch (e) {
+                    console.error('Fallback copy failed:', e);
+                }
+                document.body.removeChild(textarea);
+            }
+        });
+    });
+});
+
+// ================================================================
+// INSTALL MODAL FUNCTIONALITY
+// ================================================================
+
+const installModal = document.getElementById('installModal');
+const installModalClose = document.querySelector('.install-modal-close');
+
+// Function to open the install modal
+function openInstallModal() {
+    if (installModal) {
+        installModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+// Function to close the install modal
+function closeInstallModal() {
+    if (installModal) {
+        installModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Close modal when clicking the close button
+if (installModalClose) {
+    installModalClose.addEventListener('click', closeInstallModal);
+}
+
+// Close modal when clicking outside
+if (installModal) {
+    installModal.addEventListener('click', (e) => {
+        if (e.target === installModal) {
+            closeInstallModal();
+        }
+    });
+}
+
+// Close modal with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && installModal && installModal.classList.contains('active')) {
+        closeInstallModal();
+    }
+});
+
+// Open modal when clicking any open-install-modal button
+document.addEventListener('DOMContentLoaded', () => {
+    const openButtons = document.querySelectorAll('.open-install-modal');
+    openButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            openInstallModal();
+        });
+    });
+});
