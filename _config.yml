@@ -1,7 +1,7 @@
 # Site Settings
 title: "FlowDeck"
-tagline: "AI-Powered iOS & macOS Development"
-description: "Build iOS & macOS apps with AI in VS Code, Cursor, and Windsurf. CLI and extension for Swift development with debugging, testing, simulator control, and AI agent integration. Professional iOS development without Xcode."
+tagline: "Apple development outside Xcode"
+description: "Build, test, run, and debug iOS & macOS apps with one consistent interface—your terminal, your CI, your editor. CLI and extension for Swift development with structured output for automation."
 url: "https://flowdeck.studio"
 baseurl: ""
 lang: en_US
