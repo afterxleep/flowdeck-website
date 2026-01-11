@@ -1,7 +1,7 @@
 # Site Settings
 title: "FlowDeck"
 tagline: "Apple Build Loop CLI"
-description: "Your entire Apple build loop in one command. Build, run, test, stream logs—single keystrokes. Same interface in terminal, CI, and editor. CLI and extension for iOS & macOS development with debugging, testing, simulator control, and AI agent integration."
+description: "The entire Apple build loop in one command. Apple development CLI. Build, run, test, stream logs—single keystrokes. Same interface in terminal, CI, and editor."
 url: "https://flowdeck.studio"
 baseurl: ""
 lang: en_US
