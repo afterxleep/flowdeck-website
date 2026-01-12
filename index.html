@@ -3,28 +3,30 @@ layout: default
 body_class: home-page
 ---
 
-<!-- Hero Section - CLI First -->
+<!-- Hero Section -->
 <main>
     <section class="hero hero-cli" aria-labelledby="hero-title">
         <div class="container">
             <div class="hero-grid">
                 <header class="hero-content">
-                    <h1 id="hero-title" class="hero-title">The Apple development CLI. <br>
-                    <span class="gradient-text-pro">Finally.</span></h1>
-                    <p class="hero-subtitle">Builds. Tests. Simulators. Devices. Logs. Same commands. Terminal, CI, your Editor or favorite AI agent.</p>
+                    <h1 id="hero-title" class="hero-title">Stop switching to <span class="gradient-text-pro">Xcode</span> just to hit Build.</h1>
+                    <p class="hero-subtitle">Ship without leaving Cursor. Or your terminal. Or let AI do it for you.  FlowDeck keeps you in the flow..</p>
 
-                    <div class="install-command-block">
-                        <div class="install-command">
-                            <code id="install-command">curl -sSL https://flowdeck.studio/install.sh | sh</code>
-                            <button class="copy-btn" data-copy="curl -sSL https://flowdeck.studio/install.sh | sh" aria-label="Copy install command">
-                                <i class="fas fa-copy"></i>
-                                <span class="copy-tooltip">Copied!</span>
+                    <div class="hero-ctas-parallel">
+                        <div class="cta-buttons-row">
+                            <button class="btn btn-pro btn-large open-install-modal">
+                                <i class="fas fa-terminal"></i> FlowDeck CLI
                             </button>
+                            <a href="vscode:extension/flowdeck.flowdeck" class="btn btn-secondary btn-large">
+                                <img src="{{ site.baseurl }}/assets/images/cursor.png" alt="Cursor" width="16" height="16" class="btn-icon">
+                                Cursor Extension
+                            </a>
                         </div>
-                        <p class="install-helper">Then run <code>flowdeck -i</code> in any Xcode project.</p>
+                        <div class="cta-pricing-row">
+                            <span class="cta-price">7 days free, then $29/year</span>
+                            <span class="cta-free">Free</span>
+                        </div>
                     </div>
-
-                    <p class="hero-trial-info">7-day free trial · No credit card · Early adopter pricing available</p>
                 </header>
 
                 <figure class="hero-visual" aria-labelledby="terminal-title">
@@ -43,219 +45,273 @@ body_class: home-page
                     </div>
                 </figure>
             </div>
-
         </div>
     </section>
 
-    <!-- Product Clarification Section -->
-    <section class="product-clarification" aria-labelledby="products-title">
+    <!-- The Why Section -->
+    <section class="the-why-v5" aria-labelledby="why-title">
+        <div class="container">
+            <div class="why-content-v5">
+                <p class="why-opener">You picked your tools. Your editor. Your AI. Your process.</p>
+                <p class="why-pain">But Xcode still breaks your flow.</p>
+                <p class="why-resolution">Not anymore.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Built For Section - Card Grid -->
+    <section class="who-its-for-v4" aria-labelledby="audience-title">
         <div class="container">
             <header>
-                <h2 id="products-title" class="section-title">Pick Your Workflow.</h2>
+                <h2 id="audience-title" class="section-title">Is this you?</h2>
             </header>
 
-            <div class="product-cards">
-                <article class="product-card product-card-cli">
-                    <span class="product-badge badge-pro">CLI</span>
-                    <h3>FlowDeck CLI</h3>
-                    <p class="product-tagline">Terminal, CI, and automation</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-check"></i> Works anywhere—terminal, CI, scripts</li>
-                        <li><i class="fas fa-check"></i> Structured JSON output</li>
-                        <li><i class="fas fa-check"></i> Integrates with automation tools</li>
-                        <li><i class="fas fa-check"></i> $29/year (50% off, early adopter)</li>
-                    </ul>
-                    <div class="product-cta">
-                        <button class="btn btn-pro open-install-modal">
-                            <i class="fas fa-terminal"></i> Install CLI
-                        </button>
+            <div class="audience-grid-v4">
+                <div class="audience-item accent-blue">
+                    <h3>"Cursor keeps me in flow"</h3>
+                    <p>You left Xcode for a reason. Now you can stay gone.</p>
+                </div>
+                <div class="audience-item accent-purple">
+                    <h3>"My AI writes the code"</h3>
+                    <p>Now it can build and debug it too.</p>
+                </div>
+                <div class="audience-item accent-green">
+                    <h3>"I automate Apple builds"</h3>
+                    <p>You don't need 200 different tools anymore.</p>
+                </div>
+                <div class="audience-item accent-orange">
+                    <h3>"I just hate Xcode"</h3>
+                    <p>You already know why you're here.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FlowDeck CLI Section -->
+    <section id="cli" class="product-showcase-section product-showcase-cli" aria-labelledby="cli-title">
+        <div class="container">
+            <div class="product-showcase-layout">
+                <div class="product-showcase-content">
+                    <h2 id="cli-title" class="product-showcase-title">FlowDeck CLI</h2>
+                    <p class="product-showcase-subtitle">Terminal-first development for humans and AI agents.</p>
+
+                    <div class="product-icon-features">
+                        <div class="icon-feature">
+                            <div class="icon-feature-icon purple">
+                                <i class="fas fa-keyboard"></i>
+                            </div>
+                            <div class="icon-feature-text">
+                                <h4>TUI / Interactive Mode</h4>
+                                <p>One terminal. One keypress. B builds. R runs. L streams logs. The full Xcode workflow.</p>
+                            </div>
+                        </div>
+                        <div class="icon-feature">
+                            <div class="icon-feature-icon purple">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="icon-feature-text">
+                                <h4>JSON Output</h4>
+                                <p>Structured output across all commands. Your CI parses it. Your AI fixes it.</p>
+                            </div>
+                        </div>
+                        <div class="icon-feature">
+                            <div class="icon-feature-icon purple">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <div class="icon-feature-text">
+                                <h4>Simulator & Device Management</h4>
+                                <p>Create, boot, list, screenshot, reset. All from the command line.</p>
+                            </div>
+                        </div>
+                        <div class="icon-feature">
+                            <div class="icon-feature-icon purple">
+                                <i class="fas fa-stream"></i>
+                            </div>
+                            <div class="icon-feature-text">
+                                <h4>Real-time Log Streaming</h4>
+                                <p>Live OSLog in your terminal. Filter by app, level, or subsystem.</p>
+                            </div>
+                        </div>
+                        <div class="icon-feature">
+                            <div class="icon-feature-icon purple">
+                                <i class="fas fa-cube"></i>
+                            </div>
+                            <div class="icon-feature-text">
+                                <h4>Swift Package Manager</h4>
+                                <p>Add, update, remove dependencies. Full SPM support.</p>
+                            </div>
+                        </div>
                     </div>
-                </article>
-
-                <article class="product-card product-card-extension">
-                    <span class="product-badge badge-extension">Extension</span>
-                    <h3>Cursor Extension</h3>
-                    <p class="product-tagline">IDE integration for Cursor & VS Code</p>
-                    <ul class="product-features">
-                        <li><i class="fas fa-check"></i> GUI build/run/debug</li>
-                        <li><i class="fas fa-check"></i> Full LLDB debugging</li>
-                        <li><i class="fas fa-check"></i> Swift IntelliSense</li>
-                        <li><i class="fas fa-check"></i> Free forever</li>
-                    </ul>
-                    <div class="product-cta product-cta-stacked">
-                        <a href="cursor:extension/flowdeck.flowdeck" class="btn btn-dark" target="_blank">
-                            <img src="{{ site.baseurl }}/assets/images/cursor.png" alt="Cursor" width="16" height="16" class="btn-icon">
-                            Add to Cursor
-                        </a>
-                        <a href="vscode:extension/flowdeck.flowdeck" class="btn btn-dark">
-                            <img src="{{ site.baseurl }}/assets/images/code.png" alt="VS Code" width="16" height="16" class="btn-icon">
-                            Add to VS Code
+                </div>
+                <div class="product-showcase-visual">
+                    <div class="floating-image-container purple-glow">
+                        <img src="{{ site.baseurl }}/assets/images/cli.png" alt="FlowDeck CLI" class="floating-image lightbox-trigger">
+                    </div>
+                    <div class="product-showcase-docs">
+                        <a href="https://docs.flowdeck.studio/cli/introduction" class="btn-docs" target="_blank">
+                            <i class="fas fa-book"></i> Read the docs
                         </a>
                     </div>
-                </article>
+                </div>
             </div>
-
-            <p class="product-note">Same workflows, different interfaces. CLI for terminal and automation. Extension for visual debugging.</p>
         </div>
     </section>
 
-    <!-- CLI Features Section -->
-    <section id="cli-features" class="cli-features" aria-labelledby="cli-title">
+    <!-- Claude Code & Codex Section -->
+    <section class="ai-love-section" aria-labelledby="ai-title">
         <div class="container">
-            <header>
-                <span class="section-badge badge-pro">FlowDeck CLI</span>
-                <h2 id="cli-title" class="section-title">Workflows, not flags.</h2>
-                <p class="section-subtitle">Xcode tools are powerful but low-level. FlowDeck gives you workflow-level commands and structured results.</p>
-            </header>
+            <div class="ai-box">
+                <h3>Claude Code & Codex <span class="heart-emoji">❤️</span> FlowDeck CLI</h3>
+                <p class="ai-box-subtitle">Built for agents, not just humans.</p>
 
-            <div class="cli-features-grid">
-                <article class="cli-feature-card">
-                    <div class="cli-icon" aria-hidden="true"><i class="fas fa-keyboard"></i></div>
-                    <h3>Interactive Mode</h3>
-                    <p>Launch once. B builds. R runs. L streams logs. Persistent context you can replay.</p>
-                    <code>> flowdeck -i</code>
-                </article>
+                <ul class="ai-features-list">
+                    <li>One tool instead of Apple's fragmented CLIs</li>
+                    <li>Structured JSON instead of xcodebuild's wall of text</li>
+                    <li>Direct CLI access. No MCP servers, no wasted tokens</li>
+                    <li>Real-time log streaming. Agents see what breaks</li>
+                    <li>Skills & plugins for Claude Code, Codex & OpenCode</li>
+                    <li>UI Automation <span class="coming-soon-badge">Coming soon</span></li>
+                </ul>
 
-                <article class="cli-feature-card">
-                    <div class="cli-icon" aria-hidden="true"><i class="fas fa-terminal"></i></div>
-                    <h3>Simple Commands</h3>
-                    <p>Build, run, test, deploy, log. Each command does one thing well.</p>
-                    <code>> flowdeck run</code>
-                </article>
-
-                <article class="cli-feature-card">
-                    <div class="cli-icon" aria-hidden="true"><i class="fas fa-diagram-project"></i></div>
-                    <h3>Project Discovery</h3>
-                    <p>Schemes, targets, configs are detected automatically. No flags to memorize.</p>
-                    <code>> flowdeck project</code>
-                </article>
-
-                <article class="cli-feature-card">
-                    <div class="cli-icon" aria-hidden="true"><i class="fas fa-vial"></i></div>
-                    <h3>Test Discovery</h3>
-                    <p>Instant test discovery. Run by target, class, or method.</p>
-                    <code>> flowdeck test discover</code>
-                </article>
-
-                <article class="cli-feature-card">
-                    <div class="cli-icon" aria-hidden="true"><i class="fas fa-mobile-screen"></i></div>
-                    <h3>Simulator & Device Control</h3>
-                    <p>Boot, install, screenshot, reset. Full control over simulators and physical devices.</p>
-                    <code>> flowdeck simulator</code>
-                </article>
-
-                <article class="cli-feature-card">
-                    <div class="cli-icon" aria-hidden="true"><i class="fas fa-file-lines"></i></div>
-                    <h3>Live Log Streaming</h3>
-                    <p>Stream OSLog in real time. Filter by app, level, or subsystem.</p>
-                    <code>> flowdeck logs</code>
-                </article>
-
-                <article class="cli-feature-card">
-                    <div class="cli-icon" aria-hidden="true"><i class="fas fa-file-code"></i></div>
-                    <h3>JSON Output</h3>
-                    <p>Machine-readable output for CI/CD pipelines and automation.</p>
-                    <code>> flowdeck build --json</code>
-                </article>
-
-                <article class="cli-feature-card">
-                    <div class="cli-icon" aria-hidden="true"><i class="fas fa-robot"></i></div>
-                    <h3>Automation & AI Ready</h3>
-                    <p>Structured JSON output. Integrates with CI runners, scripts, and AI coding tools.</p>
-                </article>
+                <p class="ai-tagline-inline">Your AI writes the code. FlowDeck closes the loop.</p>
             </div>
-            <!--
-            <div class="cli-cta">
-                <a href="{{ site.docs_url }}" class="btn btn-secondary btn-large">
-                    Watch the CLI demo <i class="fas fa-play"></i>
-                </a>
-            </div>
-            -->            
         </div>
     </section>
 
-    <!-- Extension Section -->
-    <section id="extension-download" class="extension-section" aria-labelledby="extension-title">
+    <!-- FlowDeck Extension Section -->
+    <section id="extension" class="product-showcase-section product-showcase-extension" aria-labelledby="extension-title">
         <div class="container">
-            <header>
-                <span class="section-badge badge-extension">FlowDeck Extension</span>
-                <h2 id="extension-title" class="section-title">Also Available:<br>
-                <span class="gradient-text">Free Cursor Extension.</span></h2>
-                <p class="section-subtitle">Prefer a visual interface? FlowDeck Extension brings build, debug, and test to Cursor and VS Code. Full LLDB debugging, Swift IntelliSense, simulator management.</p>
-            </header>
+            <div class="product-showcase-layout reverse">
+                <div class="product-showcase-content">
+                    <h2 id="extension-title" class="product-showcase-title">FlowDeck for Cursor</h2>
+                    <p class="product-showcase-subtitle">Full IDE experience without Xcode.</p>
 
-            <div class="extension-cta-buttons">
-                <a href="cursor:extension/flowdeck.flowdeck" class="btn btn-dark btn-large" target="_blank">
-                    <img src="{{ site.baseurl }}/assets/images/cursor.png" alt="Cursor" width="20" height="20" class="btn-icon">
-                    Add to Cursor
-                </a>
-                <a href="vscode:extension/flowdeck.flowdeck" class="btn btn-dark btn-large">
-                    <img src="{{ site.baseurl }}/assets/images/code.png" alt="VS Code" width="20" height="20" class="btn-icon">
-                    Add to VS Code
-                </a>
+                    <div class="product-icon-features">
+                        <div class="icon-feature">
+                            <div class="icon-feature-icon blue">
+                                <i class="fas fa-folder-open"></i>
+                            </div>
+                            <div class="icon-feature-text">
+                                <h4>Xcode Compatible</h4>
+                                <p>Open your Xcode projects directly.</p>
+                            </div>
+                        </div>
+                        <div class="icon-feature">
+                            <div class="icon-feature-icon blue">
+                                <i class="fas fa-bug"></i>
+                            </div>
+                            <div class="icon-feature-text">
+                                <h4>LLDB Debugging</h4>
+                                <p>Real breakpoints. Real variable inspection. Not print statements.</p>
+                            </div>
+                        </div>
+                        <div class="icon-feature">
+                            <div class="icon-feature-icon blue">
+                                <i class="fas fa-vial"></i>
+                            </div>
+                            <div class="icon-feature-text">
+                                <h4>Test Explorer</h4>
+                                <p>Run one test or all of them. Results inline. Click to jump.</p>
+                            </div>
+                        </div>
+                        <div class="icon-feature">
+                            <div class="icon-feature-icon blue">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div class="icon-feature-text">
+                                <h4>Swift Intellisense</h4>
+                                <p>Autocomplete, go-to-definition, find references. SourceKit-LSP.</p>
+                            </div>
+                        </div>
+                        <div class="icon-feature">
+                            <div class="icon-feature-icon blue">
+                                <i class="fas fa-th-list"></i>
+                            </div>
+                            <div class="icon-feature-text">
+                                <h4>Simulator Sidebar</h4>
+                                <p>Boot, stop, switch. Without leaving your editor.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-showcase-visual">
+                    <div class="floating-image-container blue-glow">
+                        <img src="{{ site.baseurl }}/assets/images/extension.png" alt="FlowDeck Extension" class="floating-image lightbox-trigger">
+                    </div>
+                    <div class="product-showcase-docs">
+                        <a href="https://docs.flowdeck.studio/extension/introduction" class="btn-docs" target="_blank">
+                            <i class="fas fa-book"></i> Read the docs
+                        </a>
+                    </div>
+                </div>
             </div>
-
-            <ul class="extension-features-inline">
-                <li><i class="fas fa-check"></i> Build & debug</li>
-                <li><i class="fas fa-check"></i> Simulators</li>
-                <li><i class="fas fa-check"></i> IntelliSense</li>
-            </ul>
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="pricing-preview-section" aria-labelledby="pricing-preview-title">
+    <!-- Image Lightbox -->
+    <div class="lightbox" id="image-lightbox">
+        <div class="lightbox-backdrop"></div>
+        <div class="lightbox-content">
+            <button class="lightbox-close"><i class="fas fa-times"></i></button>
+            <img src="" alt="" class="lightbox-image">
+        </div>
+    </div>
+
+    <!-- Choose Your Path Section -->
+    <section id="pricing" class="two-products-v2" aria-labelledby="products-title">
         <div class="container">
             <header>
-                <h2 id="pricing-preview-title" class="section-title">Simple Pricing</h2>
-                <p class="section-subtitle">Free extension for everyone. Paid CLI for terminal-first and CI workflows.</p>
+                <h2 id="products-title" class="section-title">Choose Your Path</h2>
             </header>
 
-            <div class="pricing-grid-two">
-                <!-- CLI - Featured (Left) -->
-                <article class="pricing-card featured pricing-card-large">
-                    <span class="popular-badge">Early Adopter Offer</span>
-                    <div class="card-header">
+            <div class="products-grid-v2">
+                <!-- CLI - Featured -->
+                <article class="product-card-v2 featured">
+                    <span class="popular-badge">Recommended</span>
+                    <div class="product-header">
                         <h3>FlowDeck CLI</h3>
                         <div class="price-display">
-                            <span class="price-old">$59</span>
                             <span class="price-amount">$29</span>
                             <span class="price-period">/year</span>
                         </div>
                         <p class="price-note limited-offer"><i class="fas fa-bolt"></i> Early adopter pricing · Ends January 15</p>
+                        <p class="trial-note">7-day free trial · No credit card</p>
                     </div>
 
-                    <p class="trial-note">7-day free trial · No credit card</p>
+                    <ul class="product-features-list">
+                        <li><i class="fas fa-check"></i> Interactive mode (TUI) with single-key shortcuts</li>
+                        <li><i class="fas fa-check"></i> Build, run, test, clean</li>
+                        <li><i class="fas fa-check"></i> Simulator and device management</li>
+                        <li><i class="fas fa-check"></i> Log streaming</li>
+                        <li><i class="fas fa-check"></i> JSON output for CI/CD and AI agents</li>
+                        <li><i class="fas fa-check"></i> Works with any editor. Or none</li>
+                    </ul>
 
-                    <button class="btn btn-pro btn-large open-install-modal pricing-cta-btn">
+                    <button class="btn btn-pro btn-large open-install-modal product-cta-btn">
                         <i class="fas fa-terminal"></i> Install CLI
                     </button>
-
-                    <div class="includes-section">
-                        <p class="includes-label">Includes:</p>
-                        <ul class="features-list">
-                            <li><i class="fas fa-check"></i> Interactive terminal mode</li>
-                            <li><i class="fas fa-check"></i> Full test discovery & execution</li>
-                            <li><i class="fas fa-check"></i> Simulator & device management</li>
-                            <li><i class="fas fa-check"></i> OSLog streaming</li>
-                            <li><i class="fas fa-check"></i> JSON output for automation</li>
-                            <li><i class="fas fa-check"></i> One year of updates</li>
-                            <li><i class="fas fa-check"></i> Priority email support</li>
-                        </ul>
-                    </div>
                 </article>
 
-                <!-- Extension - Free (Right) -->
-                <article class="pricing-card pricing-card-secondary">
-                    <div class="card-header card-header-extension">
-                        <h3>FlowDeck Extension</h3>
+                <!-- Extension - Free -->
+                <article class="product-card-v2">
+                    <div class="product-header">
+                        <h3>FlowDeck IDE</h3>
                         <div class="price-display">
-                            <span class="price-amount">$0</span>
+                            <span class="price-amount">Free</span>
                         </div>
-                        <p class="price-note">Free forever</p>
+                        <p class="price-note">VS Code and Cursor extension</p>
                     </div>
 
-                    <div class="extension-buttons-pricing">
+                    <ul class="product-features-list">
+                        <li><i class="fas fa-check"></i> Build, run, test, clean</li>
+                        <li><i class="fas fa-check"></i> LLDB debugging</li>
+                        <li><i class="fas fa-check"></i> Test Explorer integration</li>
+                        <li><i class="fas fa-check"></i> Simulator management</li>
+                        <li><i class="fas fa-check"></i> SourceKit-LSP code intelligence</li>
+                        <li><i class="fas fa-check"></i> Swift Package Manager</li>
+                    </ul>
+
+                    <div class="extension-buttons-v2">
                         <a href="cursor:extension/flowdeck.flowdeck" class="btn btn-dark" target="_blank">
                             <img src="{{ site.baseurl }}/assets/images/cursor.png" alt="Cursor" width="16" height="16" class="btn-icon">
                             Add to Cursor
@@ -265,108 +321,56 @@ body_class: home-page
                             Add to VS Code
                         </a>
                     </div>
-
-                    <div class="includes-section">
-                        <p class="includes-label">Includes:</p>
-                        <ul class="features-list">
-                            <li><i class="fas fa-check"></i> Build, run, debug & test</li>
-                            <li><i class="fas fa-check"></i> Full Swift IntelliSense</li>
-                            <li><i class="fas fa-check"></i> Works with any Xcode project</li>
-                            <li><i class="fas fa-check"></i> Community support</li>
-                        </ul>
-                    </div>
                 </article>
             </div>
 
-            <div class="business-callout">
-                <div class="business-content">
-                    <div class="business-info">
-                        <h3>Business</h3>
-                        <p>Need FlowDeck for your team? Get Extension + CLI licenses, centralized billing, project setup assistance, and dedicated support.</p>
-                    </div>
-                    <a href="mailto:support@flowdeck.studio" class="btn btn-dark">Get in touch</a>
-                </div>
-            </div>
         </div>
     </section>
 
-    <!-- Quick Start Section -->
-    <section class="quick-start" aria-labelledby="quickstart-title">
+    <!-- The Fine Print Section - Simple -->
+    <section class="fine-print-section" aria-labelledby="fine-print-title">
         <div class="container">
             <header>
-                <h2 id="quickstart-title" class="section-title">Get Started in 15 Seconds</h2>
+                <p class="fine-print-pretext">Before you @ us on Twitter...</p>
+                <h2 id="fine-print-title" class="section-title">Yes, We Know</h2>
             </header>
 
-            <div class="quickstart-terminal">
-                <div class="quickstart-header">
-                    <div class="window-controls">
-                        <span class="control red" aria-hidden="true"></span>
-                        <span class="control yellow" aria-hidden="true"></span>
-                        <span class="control green" aria-hidden="true"></span>
-                    </div>
-                </div>
-                <pre class="quickstart-code"><span class="comment"># 1. Install</span>
-<span class="cmd">curl</span> -sSL https://flowdeck.studio/install.sh | <span class="cmd">sh</span>
-
-<span class="comment"># 2. Open any Xcode project</span>
-<span class="cmd">cd</span> ~/Projects/MyApp
-
-<span class="comment"># 3. Start building</span>
-<span class="cmd-highlight">flowdeck -i</span>    <span class="comment"># Interactive mode: B=build, R=run, T=test</span>
-
-<span class="comment"># Or use individual commands</span>
-<span class="cmd-highlight">flowdeck build</span>
-<span class="cmd-highlight">flowdeck run</span> -S "iPhone 16"
-<span class="cmd-highlight">flowdeck test</span></pre>
+            <div class="fine-print-message">
+                <p class="fine-print-main"><i class="fas fa-exclamation-triangle"></i> You still need Xcode installed. You just don't need to open it.</p>
+                <p class="fine-print-sub">FlowDeck uses xcodebuild, simulators, and SDKs under the hood.</p>
             </div>
 
-            <div class="quickstart-docs-link">
-                <a href="https://docs.flowdeck.studio/cli/ai-agents" class="btn btn-secondary btn-large" target="_blank" rel="noopener">
-                    <i class="fas fa-robot"></i> Integrate with your AI Agent
-                </a>
-                <a href="https://docs.flowdeck.studio/cli/introduction" class="btn btn-secondary btn-large" target="_blank" rel="noopener">
-                    <i class="fas fa-book"></i> Full Documentation
-                </a>
-            </div>
+            <p class="fine-print-followup">We didn't replace Xcode. We just made it so you never have to <em>look</em> at it again.</p>
+            <p class="fine-print-cta">And honestly? That's the dream.</p>
         </div>
     </section>
 
-    <!-- Why FlowDeck Section -->
-    <section class="why-flowdeck" aria-labelledby="why-title">
+    <!-- The DIY Section - CTA -->
+    <section class="diy-section" aria-labelledby="diy-title">
+        <div class="container">
+            <p class="diy-pretext">Before you say "I can build that myself"...</p>
+            <h2 id="diy-title" class="diy-title">Yes, We Also Know</h2>
+            <p class="diy-body">You could stitch this together yourself. 48 open source projects. 102 config files. Mass ChatGPT and SO threads. We'll wait.</p>
+            <p class="diy-alternative">Versus one <button class="curl-cta open-install-modal">curl</button> command or a single <a href="vscode:extension/flowdeck.flowdeck" class="click-cta">click</a>.</p>
+        </div>
+    </section>
+
+    <!-- Join Community Section -->
+    <section id="join" class="join-beta" aria-labelledby="join-title">
         <div class="container">
             <header>
-                <h2 id="why-title" class="section-title">Why FlowDeck</h2>
+                <h2 id="join-title" class="section-title">Join the Community</h2>
+                <p class="section-subtitle">Share workflows, get help, shape what comes next.</p>
             </header>
 
-            <div class="why-grid">
-                <div class="why-card">
-                    <span class="why-number">1</span>
-                    <h3>Modern Apple dev runs everywhere</h3>
-                    <p>Your terminal. Your CI. Your editor. Same workflows should work across all of them.</p>
-                </div>
-
-                <div class="why-card">
-                    <span class="why-number">2</span>
-                    <h3>Apple tooling wasn't built for this</h3>
-                    <p>xcodebuild, simctl, devicectl—powerful but fragmented. Text output. No consistency.</p>
-                </div>
-
-                <div class="why-card">
-                    <span class="why-number">3</span>
-                    <h3>FlowDeck standardizes execution</h3>
-                    <p>Workflow-level commands. Structured results. Works the same locally, in CI, and in automation.</p>
-                </div>
-
-                <div class="why-card">
-                    <span class="why-number">4</span>
-                    <h3>Built for daily shipping</h3>
-                    <p>Production infrastructure, not a side project. Used by developers shipping real apps.</p>
-                </div>
+            <div style="text-align: center;">
+                <button class="btn btn-primary btn-large open-signup">Join the Community</button>
+                <p style="margin-top: 1rem; color: #a1a1aa; font-size: 0.9rem;">Get help from the developer directly. Share feedback and feature ideas.</p>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
+    <!-- FAQ Section - Original Questions -->
     <section class="faq" aria-labelledby="faq-title">
         <div class="container">
             <header>
@@ -374,7 +378,6 @@ body_class: home-page
             </header>
 
             <div class="faq-grid">
-                <!-- Priority FAQs first -->
                 <article class="faq-item">
                     <h3 class="faq-question">Do I still need Xcode installed?</h3>
                     <p class="faq-answer">Yes. FlowDeck uses xcodebuild under the hood. Xcode must be installed, but you won't need to open it.</p>
@@ -395,10 +398,9 @@ body_class: home-page
                     <p class="faq-answer">Yes. Everything runs locally. Your code never leaves your machine.</p>
                 </article>
 
-                <!-- Additional FAQs -->
                 <article class="faq-item">
                     <h3 class="faq-question">What's the difference between Extension and CLI?</h3>
-                    <p class="faq-answer">The Extension is for hands-on development in Cursor/VS Code—build, debug, test with a GUI. The CLI is for terminal-first workflows, CI/CD pipelines, or AI agents. Use either or both.</p>
+                    <p class="faq-answer">The Extension is for hands-on development in Cursor/VS Code: build, debug, test with a GUI. The CLI is for terminal-first workflows, CI/CD pipelines, or AI agents. Use either or both.</p>
                 </article>
 
                 <article class="faq-item">
@@ -413,12 +415,12 @@ body_class: home-page
 
                 <article class="faq-item">
                     <h3 class="faq-question">Why not just use xcodebuild?</h3>
-                    <p class="faq-answer">You can. FlowDeck doesn't replace Apple's toolchain—it standardizes how you interact with it. Workflow-level commands instead of flags. Structured results instead of text parsing. Same execution semantics whether you're in terminal, CI, or an automation tool.</p>
+                    <p class="faq-answer">You can. FlowDeck doesn't replace Apple's toolchain; it standardizes how you interact with it. Workflow-level commands instead of flags. Structured results instead of text parsing. Same execution semantics whether you're in terminal, CI, or an automation tool.</p>
                 </article>
 
                 <article class="faq-item">
                     <h3 class="faq-question">How much does the CLI cost?</h3>
-                    <p class="faq-answer">$29/year early adopter price (regularly $59). Annual license includes all updates and priority support. 7-day free trial. <a href="#pricing">See pricing</a>.</p>
+                    <p class="faq-answer">$29/year early adopter price (regularly $99). Annual license includes all updates and priority support. 7-day free trial. <a href="#pricing">See pricing</a>.</p>
                 </article>
 
                 <article class="faq-item">
@@ -430,7 +432,6 @@ body_class: home-page
                     <h3 class="faq-question">Does it work with my AI subscription?</h3>
                     <p class="faq-answer">Yes. FlowDeck works alongside Claude, Cursor, Copilot, ChatGPT, or any AI assistant you already use. No changes to your existing subscriptions.</p>
                 </article>
-
             </div>
         </div>
     </section>
@@ -469,18 +470,4 @@ body_class: home-page
         </div>
     </section>
 
-    <!-- Join Community Section -->
-    <section id="join" class="join-beta" aria-labelledby="join-title">
-        <div class="container">
-            <header>
-                <h2 id="join-title" class="section-title">Join the Community</h2>
-                <p class="section-subtitle">Share workflows, get help, shape what comes next.</p>
-            </header>
-
-            <div style="text-align: center;">
-                <button class="btn btn-primary btn-large open-signup">Join the Community</button>
-                <p style="margin-top: 1rem; color: #a1a1aa; font-size: 0.9rem;">Get help from the developer directly. Share feedback and feature ideas.</p>
-            </div>
-        </div>
-    </section>
 </main>

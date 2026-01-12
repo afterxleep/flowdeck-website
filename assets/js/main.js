@@ -129,6 +129,22 @@ document.querySelectorAll('.feature-card').forEach(card => {
     observer.observe(card);
 });
 
+// Observe audience items with staggered animation
+const audienceObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -30px 0px'
+});
+
+document.querySelectorAll('.audience-item').forEach(item => {
+    audienceObserver.observe(item);
+});
+
 
 // Code typing animation (simple version)
 const codeElement = document.querySelector('.code-content code');
@@ -744,4 +760,52 @@ document.addEventListener('DOMContentLoaded', () => {
             openInstallModal();
         });
     });
+});
+
+// Image Lightbox
+const lightbox = document.getElementById('image-lightbox');
+const lightboxImage = lightbox?.querySelector('.lightbox-image');
+const lightboxClose = lightbox?.querySelector('.lightbox-close');
+const lightboxBackdrop = lightbox?.querySelector('.lightbox-backdrop');
+
+function openLightbox(imgSrc) {
+    if (lightbox && lightboxImage) {
+        lightboxImage.src = imgSrc;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeLightbox() {
+    if (lightbox) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Lightbox triggers
+document.querySelectorAll('.lightbox-trigger').forEach(img => {
+    img.addEventListener('click', () => {
+        openLightbox(img.src);
+    });
+});
+
+// Also trigger on wrapper click
+document.querySelectorAll('.showcase-image-wrapper, .product-hero-image, .floating-image-container').forEach(wrapper => {
+    wrapper.addEventListener('click', () => {
+        const img = wrapper.querySelector('img');
+        if (img) {
+            openLightbox(img.src);
+        }
+    });
+});
+
+// Close lightbox
+lightboxClose?.addEventListener('click', closeLightbox);
+lightboxBackdrop?.addEventListener('click', closeLightbox);
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox?.classList.contains('active')) {
+        closeLightbox();
+    }
 });
