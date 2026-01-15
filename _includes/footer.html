@@ -48,19 +48,29 @@
         <button class="install-modal-close" aria-label="Close modal">&times;</button>
         <header class="install-modal-header">
             <h2 id="install-modal-title" class="install-modal-title">Install FlowDeck CLI</h2>
-            <p class="install-modal-subtitle">Run this command in your terminal to install FlowDeck CLI.</p>
+            <p class="install-modal-subtitle">7-day free trial · No credit card · $29/year after</p>
         </header>
 
         <div class="install-modal-content">
-            <div class="install-command install-command-modal">
-                <code>curl -sSL https://flowdeck.studio/install.sh | sh</code>
-                <button class="copy-btn" data-copy="curl -sSL https://flowdeck.studio/install.sh | sh" aria-label="Copy install command">
-                    <i class="fas fa-copy"></i>
-                    <span class="copy-tooltip">Copied!</span>
-                </button>
+            <div class="install-modal-section">
+                <div class="install-command install-command-modal">
+                    <code>curl -sSL https://flowdeck.studio/install.sh | sh</code>
+                    <button class="copy-btn" data-copy="curl -sSL https://flowdeck.studio/install.sh | sh" aria-label="Copy install command">
+                        <i class="fas fa-copy"></i>
+                        <span class="copy-tooltip">Copied!</span>
+                    </button>
+                </div>
+                <p class="install-modal-helper">Run the command above to install.<br>Then run <code>flowdeck -i</code> from your Xcode project directory.</p>
             </div>
-            <p class="install-modal-helper">Then run <code>flowdeck -i</code> in any Xcode project.</p>
-            <p class="install-modal-info">7-day free trial · No credit card · $29/year after</p>
+
+            <div class="install-modal-divider" role="presentation" aria-hidden="true"></div>
+
+            <div class="install-modal-section install-modal-section-purchase">
+                <h3 class="install-modal-section-title">Skip the trial</h3>
+                <p class="install-modal-section-subtitle">Purchase a license now and unlock the full CLI immediately.</p>
+                <a class="btn btn-pro btn-large install-modal-cta" href="https://flowdeck.studio/cli/purchase/" target="_blank" rel="noopener">Purchase FlowDeck CLI</a>
+                <p class="install-modal-cta-note">Instant access with secure checkout.</p>
+            </div>
         </div>
     </div>
 </div>
