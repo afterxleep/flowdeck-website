@@ -1581,6 +1581,17 @@ p {
     color: #71717a;
 }
 
+/* Override browser autofill styles */
+.form-input:-webkit-autofill,
+.form-input:-webkit-autofill:hover,
+.form-input:-webkit-autofill:focus,
+.form-input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #1a1a1a inset !important;
+    -webkit-text-fill-color: #ffffff !important;
+    caret-color: #ffffff;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
 .signup-form-submit {
     background: linear-gradient(135deg, #3b82f6, #1d4ed8);
     color: white;

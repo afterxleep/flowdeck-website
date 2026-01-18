@@ -1,8 +1,13 @@
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (!href || href === '#') {
+            e.preventDefault();
+            return;
+        }
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const target = document.querySelector(href);
         if (target) {
             target.scrollIntoView({
                 behavior: 'smooth',
@@ -290,78 +295,68 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Handle form submission to Lemon Squeezy
-signupForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
+// Handle form submission to MailerLite via hidden iframe
+if (signupForm) {
+    const mlIframe = document.getElementById('ml-submit-iframe');
 
-    const submitButton = signupForm.querySelector('.signup-form-submit');
-    const originalButtonText = submitButton.textContent;
-    const name = document.getElementById('signup-name').value;
-    const email = document.getElementById('signup-email').value;
+    signupForm.addEventListener('submit', (e) => {
+        // Don't prevent default - let the form submit to the iframe naturally
+        const submitButton = signupForm.querySelector('.signup-form-submit');
+        const originalButtonText = submitButton.textContent;
 
-    // Show loading state
-    submitButton.disabled = true;
-    submitButton.textContent = 'Joining...';
+        // Show loading state
+        submitButton.disabled = true;
+        submitButton.textContent = 'Joining...';
 
-    // Remove any existing messages
-    const existingMessages = signupForm.parentElement.querySelectorAll('.signup-success-message, .signup-error-message');
-    existingMessages.forEach(msg => msg.remove());
+        // Remove any existing messages
+        const existingMessages = signupForm.parentElement.querySelectorAll('.signup-success-message, .signup-error-message');
+        existingMessages.forEach(msg => msg.remove());
 
-    try {
-        // Submit to Lemon Squeezy signup form endpoint
-        const formData = new FormData();
-        formData.append('email', email);
-        formData.append('name', name);
-
-        const response = await fetch('https://flowdeck.lemonsqueezy.com/email-subscribe/external', {
-            method: 'POST',
-            body: formData
-        });
-
-        if (response.ok) {
-            // Success - Hide form and show success message
-            signupForm.style.display = 'none';
-
-            const successMessage = document.createElement('div');
-            successMessage.className = 'signup-success-message';
-            successMessage.innerHTML = `
-                <div style="text-align: center; padding: 2rem 0;">
-                    <h3 style="color: #10b981; font-size: 1.5rem; margin-bottom: 0.5rem;">Thank You</h3>
-                    <p style="color: #a1a1aa;">You're on the list!</p>
-                </div>
-            `;
-            signupForm.parentElement.insertBefore(successMessage, signupForm);
-
-            // Close modal and reset form after 4 seconds
+        // Listen for iframe load (indicates form submission completed)
+        const handleIframeLoad = () => {
+            // Small delay to ensure MailerLite processed the request
             setTimeout(() => {
-                closeSignupModal();
-                successMessage.remove();
-                signupForm.style.display = '';
-                signupForm.reset();
-            }, 4000);
-        } else {
-            throw new Error(`Subscription failed with status ${response.status}: ${responseText}`);
-        }
-    } catch (error) {
-        console.error('Subscription error:', error);
-        console.error('Error details:', error.message);
+                // Success - Hide form and show success message
+                signupForm.style.display = 'none';
 
-        // Show error message
-        const errorMessage = document.createElement('div');
-        errorMessage.className = 'signup-error-message';
-        errorMessage.textContent = 'Something went wrong. Please try again or email us at support@flowdeck.studio';
-        signupForm.parentElement.insertBefore(errorMessage, signupForm.nextSibling);
+                const successMessage = document.createElement('div');
+                successMessage.className = 'signup-success-message';
+                successMessage.innerHTML = `
+                    <div style="text-align: center; padding: 2rem 0;">
+                        <h3 style="color: #10b981; font-size: 1.5rem; margin-bottom: 0.5rem;">Welcome to FlowDeck!</h3>
+                        <p style="color: #a1a1aa;">Check your email for confirmation.</p>
+                    </div>
+                `;
+                signupForm.parentElement.insertBefore(successMessage, signupForm);
 
-        // Remove error message after 5 seconds
+                // Reset button state
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+
+                // Close modal and reset form after 4 seconds
+                setTimeout(() => {
+                    closeSignupModal();
+                    successMessage.remove();
+                    signupForm.style.display = '';
+                    signupForm.reset();
+                }, 4000);
+
+                // Remove this listener
+                mlIframe.removeEventListener('load', handleIframeLoad);
+            }, 500);
+        };
+
+        mlIframe.addEventListener('load', handleIframeLoad);
+
+        // Fallback timeout in case iframe load doesn't fire
         setTimeout(() => {
-            errorMessage.remove();
-        }, 5000);
-    } finally {
-        // Reset button state
-        submitButton.disabled = false;
-        submitButton.textContent = originalButtonText;
-    }
-});
+            if (submitButton.disabled) {
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+            }
+        }, 10000);
+    });
+}
 
 // Open modal when clicking any open-signup button
 document.addEventListener('DOMContentLoaded', () => {
