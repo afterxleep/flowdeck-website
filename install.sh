@@ -137,6 +137,7 @@ install_binary() {
     # Clean up old layouts
     rm -rf "$BIN_DIR/flowdeck-cli_FlowDeckCore.bundle"
     rm -rf "$SHARE_DIR/flowdeck-cli_FlowDeckCore.bundle"
+    rm -rf "$SHARE_DIR/Frameworks"
     rm -f "$BIN_DIR/$BINARY_NAME"
 
     # Install binary to share directory
@@ -144,14 +145,23 @@ install_binary() {
     chmod 755 "$SHARE_DIR/$BINARY_NAME"
     xattr -d com.apple.quarantine "$SHARE_DIR/$BINARY_NAME" 2>/dev/null || true
 
-    # Install resources
-    mkdir -p "$SHARE_DIR/resources"
-    if [ -f "$TMP_DIR/resources/SKILL.md" ]; then
-        cp "$TMP_DIR/resources/SKILL.md" "$SHARE_DIR/resources/"
-    fi
-    if [ -f "$TMP_DIR/resources/flowdeck-guard.sh" ]; then
-        cp "$TMP_DIR/resources/flowdeck-guard.sh" "$SHARE_DIR/resources/"
+    # Install bundled directories (Frameworks, resources, etc.) from the archive.
+    for entry in "$TMP_DIR"/*; do
+        if [ -d "$entry" ]; then
+            entry_name=$(basename "$entry")
+            rm -rf "$SHARE_DIR/$entry_name"
+            cp -R "$entry" "$SHARE_DIR/"
+            xattr -dr com.apple.quarantine "$SHARE_DIR/$entry_name" 2>/dev/null || true
+        fi
+    done
+
+    # Ensure guard script remains executable if present.
+    if [ -f "$SHARE_DIR/resources/flowdeck-guard.sh" ]; then
         chmod 755 "$SHARE_DIR/resources/flowdeck-guard.sh"
+    fi
+
+    if [ ! -d "$SHARE_DIR/Frameworks" ]; then
+        warn "Frameworks directory missing from archive; UI automation features may not work."
     fi
 
     # Create symlink in bin directory
