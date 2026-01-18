@@ -760,6 +760,25 @@ document.addEventListener('DOMContentLoaded', () => {
             openInstallModal();
         });
     });
+
+    // Check if URL has #cli-install hash and open modal automatically
+    if (window.location.hash === '#cli-install') {
+        // Small delay to ensure page is fully loaded
+        setTimeout(() => {
+            openInstallModal();
+            // Remove the hash from URL without causing page jump
+            history.replaceState(null, null, window.location.pathname + window.location.search);
+        }, 100);
+    }
+});
+
+// Listen for hash changes to open install modal
+window.addEventListener('hashchange', () => {
+    if (window.location.hash === '#cli-install') {
+        openInstallModal();
+        // Remove the hash from URL without causing page jump
+        history.replaceState(null, null, window.location.pathname + window.location.search);
+    }
 });
 
 // Image Lightbox
