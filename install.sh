@@ -14,6 +14,14 @@ DEFAULT_SHARE_DIR="$HOME/.local/share/flowdeck"
 DEFAULT_BIN_DIR="$HOME/.local/bin"
 BINARY_NAME="flowdeck"
 
+# Parse arguments for channel selection
+CHANNEL="stable"
+for arg in "$@"; do
+    case "$arg" in
+        --beta) CHANNEL="beta" ;;
+    esac
+done
+
 # Colors (disabled if not a terminal)
 if [ -t 1 ]; then
     RED='\033[0;31m'
@@ -84,8 +92,13 @@ get_version() {
         VERSION="$FLOWDECK_VERSION"
         info "Installing specified version: ${VERSION}"
     else
-        info "Checking for latest version..."
-        VERSION=$(curl -sSL "${DOWNLOAD_BASE}/latest.txt" 2>/dev/null || echo "")
+        if [ "$CHANNEL" = "beta" ]; then
+            info "Checking for latest beta version..."
+            VERSION=$(curl -sSL "${DOWNLOAD_BASE}/latest-beta.txt" 2>/dev/null || echo "")
+        else
+            info "Checking for latest version..."
+            VERSION=$(curl -sSL "${DOWNLOAD_BASE}/latest.txt" 2>/dev/null || echo "")
+        fi
 
         if [ -z "$VERSION" ]; then
             error "Failed to determine latest version. Check your internet connection."
@@ -224,7 +237,11 @@ verify_install() {
 # Print success message
 print_success() {
     echo ""
-    success "FlowDeck CLI ${VERSION} installed successfully!"
+    if [ "$CHANNEL" = "beta" ]; then
+        success "FlowDeck CLI ${VERSION} [beta] installed successfully!"
+    else
+        success "FlowDeck CLI ${VERSION} installed successfully!"
+    fi
     echo ""
     echo "Location: ~/.local/share/flowdeck/"
     echo "Symlink:  ~/.local/bin/flowdeck"

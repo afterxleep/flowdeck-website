@@ -10,22 +10,18 @@ body_class: home-page
             <div class="hero-grid">
                 <header class="hero-content">
                     <h1 id="hero-title" class="hero-title">Stop switching to <span class="gradient-text-pro">Xcode</span> just to hit <br>Build.</h1>
-                    <p class="hero-subtitle">Ship without leaving Cursor. Or your terminal. Or let AI do it for you. FlowDeck keeps you in the flow.</p>
+                    <p class="hero-subtitle">Ship your apps without leaving your terminal. Or let AI do it for you. FlowDeck keeps you in the flow.</p>
 
-                    <div class="hero-ctas-parallel">
-                        <div class="cta-buttons-row">
-                            <button class="btn btn-pro btn-large open-install-modal">
-                                <i class="fas fa-terminal"></i> FlowDeck CLI
+                    <h2 class="hero-cta-title">Install FlowDeck CLI</h2>
+                    <div class="install-command-block">
+                        <div class="install-command">
+                            <code>curl -sSL https://flowdeck.studio/install.sh | sh</code>
+                            <button class="copy-btn" data-copy="curl -sSL https://flowdeck.studio/install.sh | sh" aria-label="Copy install command">
+                                <i class="fas fa-copy"></i>
+                                <span class="copy-tooltip">Copied!</span>
                             </button>
-                            <a href="vscode:extension/flowdeck.flowdeck" class="btn btn-secondary btn-large">
-                                <img src="{{ site.baseurl }}/assets/images/cursor.png" alt="Cursor" width="16" height="16" class="btn-icon">
-                                Cursor Extension
-                            </a>
                         </div>
-                        <div class="cta-pricing-row">
-                            <span class="cta-price">7 days free, then $59/year</span>
-                            <span class="cta-free">Free</span>
-                        </div>
+                        <p class="install-helper">Then run <code>flowdeck -i</code> from your Xcode project directory.</p>
                     </div>
                 </header>
 
@@ -52,102 +48,208 @@ body_class: home-page
     <section class="the-why-v5" aria-labelledby="why-title">
         <div class="container">
             <div class="why-content-v5">
-                <p class="why-statement">You work from the terminal now. <span class="dim">Your editor has better AI.</span> But Xcode still breaks your flow.</p>
+                <p class="why-statement">You work from the terminal now. <span class="dim">Use the best AI tools.</span> But Xcode still breaks your flow.</p>
                 <p class="why-resolution">Not anymore.</p>
             </div>
         </div>
     </section>
 
-    <!-- FlowDeck CLI Section -->
-    <section id="cli" class="product-showcase-section product-showcase-cli" aria-labelledby="cli-title">
-        <div class="container">
-            <div class="product-showcase-layout">
-                <div class="product-showcase-content">
-                    <h2 id="cli-title" class="product-showcase-title">FlowDeck CLI</h2>
-                    <p class="product-showcase-subtitle">Terminal-first development for Apple Developers.</p>
+    <!-- Zero to Simulator Section -->
+    <section class="zero-to-simulator">
+        <div class="video-full-bleed">
+            <div class="video-full-frame">
+                <video id="zero-to-sim-video" class="video-full" preload="auto" playsinline controls>
+                    <source src="{{ site.baseurl }}/assets/videos/create-project.mp4" type="video/mp4">
+                </video>
+                <div class="video-overlay" aria-hidden="true">
+                    <button class="video-overlay-btn" type="button" aria-label="Play video">
+                        <i class="fas fa-play"></i>
+                    </button>
+                </div>
+            </div>
+            <p class="video-caption">Watch: From zero to simulator in two minutes</p>
+        </div>
+    </section>
 
-                    <div class="product-icon-features">
-                        <div class="icon-feature">
-                            <div class="icon-feature-icon purple">
-                                <i class="fas fa-keyboard"></i>
-                            </div>
-                            <div class="icon-feature-text">
-                                <h4>TUI / Interactive Mode</h4>
-                                <p>B builds. R runs. K cleans. One keypress. No Xcode.</p>
-                            </div>
+    <!-- FlowDeck CLI Section -->
+    <section id="cli" class="product-showcase-section product-showcase-cli cli-features-section" aria-labelledby="cli-title">
+        <div class="container">
+            <header class="cli-features-header">
+                <h2 id="cli-title" class="cli-features-title">Meet FlowDeck CLI</h2>
+                <p class="cli-features-subtitle">Terminal-first workflow for Apple Developers.</p>
+            </header>
+
+            <div class="cli-bento-grid">
+                <!-- Row 1: Interactive Mode Hero (2 cols) + Simulator (1 col) -->
+                <article class="cli-bento-card cli-bento-hero" data-accent="purple">
+                    <div class="cli-card-glow"></div>
+                    <div class="cli-card-content">
+                        <div class="cli-card-icon-badge">
+                            <i class="fas fa-keyboard"></i>
                         </div>
-                        <div class="icon-feature">
-                            <div class="icon-feature-icon purple">
-                                <i class="fas fa-stream"></i>
-                            </div>
-                            <div class="icon-feature-text">
-                                <h4>Real-time Log Streaming</h4>
-                                <p>OSLog in your terminal. See what broke without switching windows.</p>
-                            </div>
+                        <div class="cli-card-code">
+                            <code><span class="cli-key">B</span> Build  <span class="cli-key">R</span> Run  <span class="cli-key">T</span> Test  <span class="cli-key">K</span> Clean</code>
                         </div>
-                        <div class="icon-feature">
-                            <div class="icon-feature-icon purple">
-                                <i class="fas fa-mobile-alt"></i>
-                            </div>
-                            <div class="icon-feature-text">
-                                <h4>Simulator & Device Management</h4>
-                                <p>iOS, watchOS, tvOS, visionOS. Boot, reset, screenshot. One command.</p>
-                            </div>
-                        </div>
-                        <div class="icon-feature">
-                            <div class="icon-feature-icon purple">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <div class="icon-feature-text">
-                                <h4>JSON Output</h4>
-                                <p>xcodebuild output is chaos. This isn't. Your CI parses it. Your AI fixes it.</p>
-                            </div>
-                        </div>
-                        <div class="icon-feature">
-                            <div class="icon-feature-icon purple">
-                                <i class="fas fa-cube"></i>
-                            </div>
-                            <div class="icon-feature-text">
-                                <h4>Package Management & More</h4>
-                                <p>SPM, provisioning, project discovery. No more "let me just open Xcode." Gone.</p>
-                            </div>
+                        <div class="cli-card-body">
+                            <h3>Interactive Mode</h3>
+                            <p>Single keystrokes. Zero context switching. No Xcode needed. Your terminal becomes the command center.</p>
                         </div>
                     </div>
-                </div>
-                <div class="product-showcase-visual">
-                    <div class="floating-image-container purple-glow">
-                        <img src="{{ site.baseurl }}/assets/images/cli.png" alt="FlowDeck CLI" class="floating-image lightbox-trigger">
+                </article>
+
+                <article class="cli-bento-card" data-accent="cyan">
+                    <div class="cli-card-glow"></div>
+                    <div class="cli-card-content">
+                        <div class="cli-card-code">
+                            <code>flowdeck simulator boot <span class="cli-string">"iOS 26"</span></code>
+                            <code class="cli-code-secondary">flowdeck simulator erase</code>
+                        </div>
+                        <div class="cli-card-body">
+                            <h3>Simulator Control</h3>
+                            <p>Create, Boot, reset, manage platforms.</p>
+                        </div>
                     </div>
-                    <div class="product-showcase-docs">
-                        <a href="https://docs.flowdeck.studio/cli/introduction" class="btn-docs" target="_blank">
-                            <i class="fas fa-book"></i> Read the docs
-                        </a>
-                        <button class="btn-docs btn-video" data-video="/assets/intro.mp4">
-                            <i class="fas fa-play"></i> Watch the intro video
-                        </button>
+                </article>
+
+                <!-- Row 2: UI Automation Hero (2 cols) + Log Streaming (1 col) -->
+                <article class="cli-bento-card cli-bento-hero" data-accent="pink">
+                    <div class="cli-card-glow"></div>
+                    <div class="cli-card-content">
+                        <div class="cli-card-icon-badge">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="cli-card-code">
+                            <code>flowdeck ui tap <span class="cli-string">"Login"</span></code>
+                            <code class="cli-code-secondary">flowdeck ui swipe up · flowdeck ui screenshot</code>
+                        </div>
+                        <div class="cli-card-body">
+                            <h3>UI Automation</h3>
+                            <p>Tap, swipe, pinch, scroll, screenshot. AI agents can see the screen. Close the loop.</p>
+                        </div>
                     </div>
-                </div>
+                </article>
+
+                <article class="cli-bento-card" data-accent="green">
+                    <div class="cli-card-glow"></div>
+                    <div class="cli-card-content">
+                        <div class="cli-card-code">
+                            <code><span class="cli-dim">[net]</span> GET /api <span class="cli-success">→ 200</span></code>
+                            <code class="cli-code-secondary"><span class="cli-dim">[app]</span> loaded user</code>
+                        </div>
+                        <div class="cli-card-body">
+                            <h3>Log Streaming</h3>
+                            <p>OSLog in your terminal. <br>Beautifully formatted. Live.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Row 3: Three equal cards -->
+                <article class="cli-bento-card" data-accent="blue">
+                    <div class="cli-card-glow"></div>
+                    <div class="cli-card-content">
+                        <div class="cli-card-code">
+                            <code>flowdeck project create <span class="cli-string">MyApp</span></code>
+                        </div>
+                        <div class="cli-card-body">
+                            <h3>Project Creation</h3>
+                            <p>From zero to Xcode project in seconds.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="cli-bento-card" data-accent="amber">
+                    <div class="cli-card-glow"></div>
+                    <div class="cli-card-content">
+                        <div class="cli-card-code">
+                            <code><span class="cli-output">{"success": <span class="cli-string">true</span>}</code>
+                        </div>
+                        <div class="cli-card-body">
+                            <h3>JSON Output</h3>
+                            <p>Machine-readable everything. CI ready.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="cli-bento-card" data-accent="amber">
+                    <div class="cli-card-glow"></div>
+                    <div class="cli-card-content">
+                        <div class="cli-card-code">
+                            <code>flowdeck context</code>
+                        </div>
+                        <div class="cli-card-body">
+                            <h3>Context Discovery</h3>
+                            <p>One command shows schemes, targets, simulators</p>
+                        </div>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- Claude Code & Codex Section -->
-    <section class="ai-love-section" aria-labelledby="ai-title">
+    <!-- AI Agents Section -->
+    <section class="ai-love-section">
         <div class="container">
-            <div class="ai-box">
-                <h3>Claude Code & Codex <span class="heart-emoji">❤️</span> FlowDeck CLI</h3>
-                <p class="ai-box-subtitle">Built for agents, not just humans.</p>
+            <div class="ai-hero-card">
+                <div class="ai-hero-glow"></div>
+                <div class="ai-hero-content">
+                    <div class="ai-hero-header">
+                        <div class="ai-logos">
+                            <img src="{{ site.baseurl }}/assets/images/claude.png" alt="Claude" class="ai-logo">
+                            <img src="{{ site.baseurl }}/assets/images/codex.png" alt="Codex" class="ai-logo">
+                        </div>
+                        <h3>Built for AI Agents</h3>
+                        <p class="ai-hero-subtitle">Not just humans.</p>
+                    </div>
+                    
+                    <div class="ai-features-grid">
+                        <div class="ai-feature-item">
+                            <div class="ai-feature-icon"><i class="fas fa-cube"></i></div>
+                            <div class="ai-feature-text">
+                                <strong>One unified tool</strong>
+                                <span>Replaces Apple's fragmented CLIs</span>
+                            </div>
+                        </div>
+                        <div class="ai-feature-item">
+                            <div class="ai-feature-icon"><i class="fas fa-code"></i></div>
+                            <div class="ai-feature-text">
+                                <strong>Structured JSON output</strong>
+                                <span>No more parsing xcodebuild walls</span>
+                            </div>
+                        </div>
+                        <div class="ai-feature-item">
+                            <div class="ai-feature-icon"><i class="fas fa-terminal"></i></div>
+                            <div class="ai-feature-text">
+                                <strong>Direct CLI access</strong>
+                                <span>No MCP servers, no wasted tokens</span>
+                            </div>
+                        </div>
+                        <div class="ai-feature-item">
+                            <div class="ai-feature-icon"><i class="fas fa-stream"></i></div>
+                            <div class="ai-feature-text">
+                                <strong>Real-time log streaming</strong>
+                                <span>Agents see what breaks instantly</span>
+                            </div>
+                        </div>
+                        <div class="ai-feature-item">
+                            <div class="ai-feature-icon"><i class="fas fa-puzzle-piece"></i></div>
+                            <div class="ai-feature-text">
+                                <strong>Skills & plugins</strong>
+                                <span>Claude Code, Codex, OpenCode</span>
+                            </div>
+                        </div>
+                        <div class="ai-feature-item">
+                            <div class="ai-feature-icon"><i class="fas fa-eye"></i></div>
+                            <div class="ai-feature-text">
+                                <strong>UI Automation</strong>
+                                <span>Agents see and interact with screens</span>
+                            </div>
+                        </div>
+                    </div>
 
-                <ul class="ai-features-list">
-                    <li>One tool instead of Apple's fragmented CLIs</li>
-                    <li>Structured JSON instead of xcodebuild's wall of text</li>
-                    <li>Direct CLI access. No MCP servers, no wasted tokens</li>
-                    <li>Real-time log streaming. Agents see what breaks</li>
-                    <li>Skills & plugins for Claude Code, Codex & OpenCode</li>
-                    <li>Agent UI Automation <span class="coming-soon-badge">Coming soon</span></li>
-                </ul>
-
-                <p class="ai-tagline-inline">Your AI writes the code. FlowDeck closes the loop.</p>
+                    <div class="ai-hero-footer">
+                        <p class="ai-tagline">Your AI writes the code. <span>FlowDeck closes the loop.</span></p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

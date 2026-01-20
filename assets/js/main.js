@@ -879,3 +879,64 @@ document.addEventListener('keydown', (e) => {
         closeVideoLightbox();
     }
 });
+
+// ================================================================
+// ZERO TO SIMULATOR VIDEO PREVIEW
+// ================================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    const video = document.getElementById('zero-to-sim-video');
+    const frame = document.querySelector('.video-full-frame');
+    const playButton = document.querySelector('.video-overlay-btn');
+    if (!video || !frame || !playButton) {
+        return;
+    }
+
+    const previewTime = 2;
+    let hasStarted = false;
+
+    const setPreviewFrame = () => {
+        const fallbackTime = Math.max(0, (video.duration || previewTime) - 0.1);
+        const targetTime = Math.min(previewTime, fallbackTime);
+        if (!Number.isNaN(targetTime)) {
+            video.currentTime = targetTime;
+            video.pause();
+        }
+    };
+
+    const showOverlay = () => {
+        frame.classList.remove('is-playing');
+    };
+
+    const hideOverlay = () => {
+        frame.classList.add('is-playing');
+    };
+
+    playButton.addEventListener('click', () => {
+        hideOverlay();
+        if (!hasStarted) {
+            video.currentTime = 0;
+            hasStarted = true;
+        }
+        const playPromise = video.play();
+        if (playPromise && typeof playPromise.catch === 'function') {
+            playPromise.catch(() => {
+                showOverlay();
+            });
+        }
+    });
+
+    video.addEventListener('play', hideOverlay);
+    video.addEventListener('pause', showOverlay);
+    video.addEventListener('ended', () => {
+        showOverlay();
+        hasStarted = false;
+        setPreviewFrame();
+    });
+
+    if (video.readyState >= 1) {
+        setPreviewFrame();
+    } else {
+        video.addEventListener('loadedmetadata', setPreviewFrame, { once: true });
+    }
+});
