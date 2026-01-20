@@ -1,0 +1,208 @@
+---
+layout: default
+title: AI iOS Development Workflow for Claude and Codex
+description: "Let AI agents build, test, and automate iOS apps with FlowDeck CLI, structured output, and UI automation."
+permalink: /ai-ios-development/
+body_class: home-page xcodebuild-page
+---
+
+<main>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <div class="container">
+            <a href="{{ site.baseurl }}/">FlowDeck CLI</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="{{ site.baseurl }}/workflows/">Workflows</a>
+            <span class="breadcrumb-sep">/</span>
+            <span>AI iOS Development</span>
+        </div>
+    </nav>
+
+    <section class="xcodebuild-hero" aria-labelledby="hero-title">
+        <div class="container">
+            <header class="xcodebuild-hero-header">
+                <h1 id="hero-title" class="xcodebuild-hero-title">AI iOS development that closes the loop</h1>
+                <p class="xcodebuild-hero-subtitle">Agents write code. FlowDeck runs the workflow.</p>
+            </header>
+            <div class="xcodebuild-hero-content">
+                <p class="xcodebuild-hero-lead">FlowDeck gives Claude, Codex, and other agents the missing part of iOS development: builds, tests, logs, simulators, and UI automation with machine-readable output.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="xcodebuild-problem" aria-labelledby="problem-title">
+        <div class="container">
+            <header>
+                <h2 id="problem-title" class="section-title">AI can edit code. It cannot ship.</h2>
+                <p class="section-subtitle">The feedback loop still breaks.</p>
+            </header>
+
+            <div class="problem-content">
+                <p class="problem-lead">Without a CLI workflow, agents are stuck with:</p>
+                <ul class="problem-list">
+                    <li>Manual Xcode builds and log copying</li>
+                    <li>Unstructured output that agents cannot parse</li>
+                    <li>No way to control simulators or devices</li>
+                    <li>No UI automation for screenshots and taps</li>
+                    <li>Human-in-the-loop just to run tests</li>
+                </ul>
+                <p class="problem-conclusion">That is not AI-assisted shipping. <strong>That is AI-assisted typing.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="xcodebuild-sidebyside" aria-labelledby="sidebyside-title">
+        <div class="container">
+            <header>
+                <h2 id="sidebyside-title" class="section-title">Side by side</h2>
+            </header>
+
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Step</th>
+                            <th class="col-apple">Manual flow</th>
+                            <th class="col-flowdeck">FlowDeck</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="task-cell">Build and run</td>
+                            <td class="apple-cell">Open Xcode, click Run, copy errors</td>
+                            <td class="flowdeck-cell"><code>flowdeck run</code></td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">Run tests</td>
+                            <td class="apple-cell">Trigger tests, parse logs manually</td>
+                            <td class="flowdeck-cell"><code>flowdeck test --json</code></td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">Capture logs</td>
+                            <td class="apple-cell">Filter and scroll through Console</td>
+                            <td class="flowdeck-cell"><code>flowdeck logs</code></td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">UI actions</td>
+                            <td class="apple-cell">Manual screenshots and taps</td>
+                            <td class="flowdeck-cell"><code>flowdeck ui screenshot</code></td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">Discover context</td>
+                            <td class="apple-cell">Find schemes and targets manually</td>
+                            <td class="flowdeck-cell"><code>flowdeck context</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="xcodebuild-commands" aria-labelledby="commands-title">
+        <div class="container">
+            <header>
+                <h2 id="commands-title" class="section-title">Commands agents can rely on</h2>
+            </header>
+
+            <div class="commands-comparison">
+                <div class="commands-card commands-apple">
+                    <h3>Manual loop:</h3>
+                    <div class="commands-list">
+                        <code>Xcode</code><code>Console</code><code>Screenshots</code><code>Notes</code><code>Copy</code><code>Paste</code><span class="commands-ellipsis">...</span>
+                    </div>
+                </div>
+
+                <div class="commands-card commands-flowdeck">
+                    <h3>FlowDeck:</h3>
+                    <div class="commands-list commands-list-clean">
+                        <code>context</code><code>build</code><code>run</code><code>test</code><code>logs</code><code>ui</code>
+                    </div>
+                    <p class="commands-tagline">Short commands, structured output, fast loop.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="xcodebuild-output" aria-labelledby="output-title">
+        <div class="container">
+            <header>
+                <h2 id="output-title" class="section-title">Agent-friendly output</h2>
+            </header>
+
+            <div class="output-comparison">
+                <div class="output-card output-apple">
+                    <div class="output-card-header">
+                        <span class="output-label">Unstructured output:</span>
+                    </div>
+                    <div class="output-card-body">
+                        <pre class="output-code"><code>Copied error log into chat...
+Tried to describe the UI state...
+Sent another screenshot...</code></pre>
+                        <p class="output-note">Slow feedback loops.</p>
+                    </div>
+                </div>
+
+                <div class="output-card output-flowdeck">
+                    <div class="output-card-header">
+                        <span class="output-label">FlowDeck output:</span>
+                    </div>
+                    <div class="output-card-body">
+                        <pre class="output-code output-code-json"><code>{
+  <span class="json-key">"type"</span>: <span class="json-val">"ui_screenshot"</span>,
+  <span class="json-key">"path"</span>: <span class="json-val">".flowdeck/ui/latest.png"</span>
+}
+{
+  <span class="json-key">"type"</span>: <span class="json-val">"test_summary"</span>,
+  <span class="json-key">"failed"</span>: <span class="json-val">1</span>
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <p class="output-tagline">Structured output means agents can act without guesswork.</p>
+        </div>
+    </section>
+
+    <section class="xcodebuild-unchanged" aria-labelledby="unchanged-title">
+        <div class="container">
+            <header>
+                <h2 id="unchanged-title" class="section-title">What does not change</h2>
+            </header>
+
+            <div class="unchanged-grid">
+                <div class="unchanged-item">
+                    <i class="fas fa-check"></i>
+                    <span>Your <code>.xcodeproj</code> and <code>.xcworkspace</code></span>
+                </div>
+                <div class="unchanged-item">
+                    <i class="fas fa-check"></i>
+                    <span>Your signing and build settings</span>
+                </div>
+                <div class="unchanged-item">
+                    <i class="fas fa-check"></i>
+                    <span>Your Apple toolchain</span>
+                </div>
+            </div>
+
+            <p class="unchanged-tagline">FlowDeck enables agents. <strong>It does not replace Xcode.</strong></p>
+        </div>
+    </section>
+
+    <section class="xcodebuild-cta" aria-labelledby="cta-title">
+        <div class="container">
+            <div class="xcodebuild-cta-content">
+                <h2 id="cta-title" class="section-title">Give agents the build loop</h2>
+                <p class="cta-subtitle">7-day free trial. No credit card required.</p>
+
+                <div class="install-command-block install-command-cta">
+                    <div class="install-command">
+                        <code>curl -sSL https://flowdeck.studio/install.sh | sh</code>
+                        <button class="copy-btn" data-copy="curl -sSL https://flowdeck.studio/install.sh | sh" aria-label="Copy install command">
+                            <i class="fas fa-copy"></i>
+                            <span class="copy-tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

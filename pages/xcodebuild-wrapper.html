@@ -1,0 +1,206 @@
+---
+layout: default
+title: xcodebuild Wrapper with JSON Output
+description: "A modern xcodebuild wrapper for iOS and macOS builds, tests, and simulator runs with structured JSON output."
+permalink: /xcodebuild-wrapper/
+body_class: home-page xcodebuild-page
+---
+
+<main>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <div class="container">
+            <a href="{{ site.baseurl }}/">FlowDeck CLI</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="{{ site.baseurl }}/workflows/">Workflows</a>
+            <span class="breadcrumb-sep">/</span>
+            <span>xcodebuild Wrapper</span>
+        </div>
+    </nav>
+
+    <section class="xcodebuild-hero" aria-labelledby="hero-title">
+        <div class="container">
+            <header class="xcodebuild-hero-header">
+                <h1 id="hero-title" class="xcodebuild-hero-title">A modern <code>xcodebuild</code> wrapper with JSON output</h1>
+                <p class="xcodebuild-hero-subtitle">Keep the toolchain. Fix the workflow.</p>
+            </header>
+            <div class="xcodebuild-hero-content">
+                <p class="xcodebuild-hero-lead">FlowDeck calls <code>xcodebuild</code> under the hood, then adds consistent commands for run, test, logs, and simulators. The output is structured, not a wall of text.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="xcodebuild-problem" aria-labelledby="problem-title">
+        <div class="container">
+            <header>
+                <h2 id="problem-title" class="section-title">The wrapper you wish you had</h2>
+                <p class="section-subtitle">xcodebuild works. The glue does not.</p>
+            </header>
+
+            <div class="problem-content">
+                <p class="problem-lead">A typical xcodebuild flow means:</p>
+                <ul class="problem-list">
+                    <li>Long destination strings that break yearly</li>
+                    <li><code>simctl</code> and <code>devicectl</code> for every run</li>
+                    <li>Manual log streaming with predicates</li>
+                    <li>Test flags that only a regex can love</li>
+                    <li>Output that is not machine readable</li>
+                </ul>
+                <p class="problem-conclusion">A wrapper should give you a workflow. <strong>Not more scripts.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="xcodebuild-sidebyside" aria-labelledby="sidebyside-title">
+        <div class="container">
+            <header>
+                <h2 id="sidebyside-title" class="section-title">Side by side</h2>
+            </header>
+
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th class="col-apple">xcodebuild</th>
+                            <th class="col-flowdeck">FlowDeck</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="task-cell">Run on simulator</td>
+                            <td class="apple-cell">Build, then <code>simctl install</code>, then <code>simctl launch</code></td>
+                            <td class="flowdeck-cell"><code>flowdeck run -S "iPhone 16"</code></td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">Stream logs</td>
+                            <td class="apple-cell"><code>log stream</code> with predicates</td>
+                            <td class="flowdeck-cell"><code>flowdeck logs</code></td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">Run one test</td>
+                            <td class="apple-cell"><code>-only-testing:MyAppTests/LoginTests/testLogin</code></td>
+                            <td class="flowdeck-cell"><code>flowdeck test --only LoginTests/testLogin</code></td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">Discover schemes</td>
+                            <td class="apple-cell"><code>xcodebuild -list</code> and parse output</td>
+                            <td class="flowdeck-cell"><code>flowdeck context</code></td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">Machine output</td>
+                            <td class="apple-cell">Regex and hope</td>
+                            <td class="flowdeck-cell"><code>--json</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="xcodebuild-commands" aria-labelledby="commands-title">
+        <div class="container">
+            <header>
+                <h2 id="commands-title" class="section-title">One wrapper, full workflow</h2>
+            </header>
+
+            <div class="commands-comparison">
+                <div class="commands-card commands-apple">
+                    <h3>Apple's tooling:</h3>
+                    <div class="commands-list">
+                        <code>xcodebuild</code><code>xcrun</code><code>simctl</code><code>devicectl</code><code>log</code><code>xcresulttool</code><span class="commands-ellipsis">...</span>
+                    </div>
+                </div>
+
+                <div class="commands-card commands-flowdeck">
+                    <h3>FlowDeck:</h3>
+                    <div class="commands-list commands-list-clean">
+                        <code>context</code><code>build</code><code>run</code><code>test</code><code>logs</code><code>simulator</code><code>device</code><code>clean</code>
+                    </div>
+                    <p class="commands-tagline">Less glue. More shipping.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="xcodebuild-output" aria-labelledby="output-title">
+        <div class="container">
+            <header>
+                <h2 id="output-title" class="section-title">JSON output by default</h2>
+            </header>
+
+            <div class="output-comparison">
+                <div class="output-card output-apple">
+                    <div class="output-card-header">
+                        <span class="output-label">Unstructured output:</span>
+                    </div>
+                    <div class="output-card-body">
+                        <pre class="output-code"><code>** BUILD FAILED **
+... hundreds of lines of flags ...
+/Users/dev/App/View.swift:42:15: error: cannot convert value...</code></pre>
+                        <p class="output-note">Not friendly to automation.</p>
+                    </div>
+                </div>
+
+                <div class="output-card output-flowdeck">
+                    <div class="output-card-header">
+                        <span class="output-label">FlowDeck output:</span>
+                    </div>
+                    <div class="output-card-body">
+                        <pre class="output-code output-code-json"><code>{
+  <span class="json-key">"type"</span>: <span class="json-val">"error"</span>,
+  <span class="json-key">"file"</span>: <span class="json-val">"View.swift"</span>,
+  <span class="json-key">"line"</span>: <span class="json-val">42</span>,
+  <span class="json-key">"message"</span>: <span class="json-val">"cannot convert value"</span>
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <p class="output-tagline">Structured output means less parsing and faster automation.</p>
+        </div>
+    </section>
+
+    <section class="xcodebuild-unchanged" aria-labelledby="unchanged-title">
+        <div class="container">
+            <header>
+                <h2 id="unchanged-title" class="section-title">What does not change</h2>
+            </header>
+
+            <div class="unchanged-grid">
+                <div class="unchanged-item">
+                    <i class="fas fa-check"></i>
+                    <span>Your <code>.xcodeproj</code> and <code>.xcworkspace</code></span>
+                </div>
+                <div class="unchanged-item">
+                    <i class="fas fa-check"></i>
+                    <span>Your signing and build settings</span>
+                </div>
+                <div class="unchanged-item">
+                    <i class="fas fa-check"></i>
+                    <span>Your Apple toolchain</span>
+                </div>
+            </div>
+
+            <p class="unchanged-tagline">FlowDeck wraps <code>xcodebuild</code>. <strong>It does not replace it.</strong></p>
+        </div>
+    </section>
+
+    <section class="xcodebuild-cta" aria-labelledby="cta-title">
+        <div class="container">
+            <div class="xcodebuild-cta-content">
+                <h2 id="cta-title" class="section-title">Try the wrapper</h2>
+                <p class="cta-subtitle">7-day free trial. No credit card required.</p>
+
+                <div class="install-command-block install-command-cta">
+                    <div class="install-command">
+                        <code>curl -sSL https://flowdeck.studio/install.sh | sh</code>
+                        <button class="copy-btn" data-copy="curl -sSL https://flowdeck.studio/install.sh | sh" aria-label="Copy install command">
+                            <i class="fas fa-copy"></i>
+                            <span class="copy-tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

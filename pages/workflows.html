@@ -1,0 +1,102 @@
+---
+layout: default
+title: Workflows
+description: "Focused workflow pages for Apple development, automation, and AI-assisted iOS/macOS builds."
+permalink: /workflows/
+body_class: home-page xcodebuild-page
+---
+
+<main>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <div class="container">
+            <a href="{{ site.baseurl }}/">FlowDeck CLI</a>
+            <span class="breadcrumb-sep">/</span>
+            <span>Workflows</span>
+        </div>
+    </nav>
+
+    <section class="xcodebuild-hero" aria-labelledby="workflows-hero-title">
+        <div class="container">
+            <header class="xcodebuild-hero-header">
+                <h1 id="workflows-hero-title" class="xcodebuild-hero-title">FlowDeck Workflows</h1>
+                <p class="xcodebuild-hero-subtitle">Pick the flow that matches your problem.</p>
+            </header>
+            <div class="xcodebuild-hero-content">
+                <p class="xcodebuild-hero-lead">Each workflow page breaks down the pain points and shows how FlowDeck simplifies the Apple build loop without replacing Xcode.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="xcodebuild-commands" aria-labelledby="workflows-title">
+        <div class="container">
+            <header>
+                <h2 id="workflows-title" class="section-title">Choose a workflow</h2>
+            </header>
+
+            <div class="posts-grid">
+                <article class="post-card">
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-category"><i class="fas fa-terminal"></i> Core workflow</span>
+                        </div>
+                        <h3 class="post-title"><a href="{{ site.baseurl }}/apple-development-cli/">Apple Development CLI</a></h3>
+                        <p class="post-excerpt">Build, run, test, simulators, devices, and logs with a single terminal-first CLI.</p>
+                        <a href="{{ site.baseurl }}/apple-development-cli/" class="btn btn-secondary">View workflow</a>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-category"><i class="fas fa-code"></i> Build system</span>
+                        </div>
+                        <h3 class="post-title"><a href="{{ site.baseurl }}/xcodebuild-wrapper/">xcodebuild Wrapper</a></h3>
+                        <p class="post-excerpt">Keep xcodebuild. Add JSON output, consistent flags, and a full workflow around it.</p>
+                        <a href="{{ site.baseurl }}/xcodebuild-wrapper/" class="btn btn-secondary">View workflow</a>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-category"><i class="fas fa-bolt"></i> Automation</span>
+                        </div>
+                        <h3 class="post-title"><a href="{{ site.baseurl }}/ios-build-automation/">iOS Build Automation</a></h3>
+                        <p class="post-excerpt">Standardize builds and tests for CI and local development with one command surface.</p>
+                        <a href="{{ site.baseurl }}/ios-build-automation/" class="btn btn-secondary">View workflow</a>
+                    </div>
+                </article>
+
+                <article class="post-card">
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-category"><i class="fas fa-robot"></i> AI agents</span>
+                        </div>
+                        <h3 class="post-title"><a href="{{ site.baseurl }}/ai-ios-development/">AI iOS Development</a></h3>
+                        <p class="post-excerpt">Let agents build, test, and automate UI flows with structured output and logs.</p>
+                        <a href="{{ site.baseurl }}/ai-ios-development/" class="btn btn-secondary">View workflow</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="xcodebuild-cta" aria-labelledby="cta-title">
+        <div class="container">
+            <div class="xcodebuild-cta-content">
+                <h2 id="cta-title" class="section-title">Want to try the CLI?</h2>
+                <p class="cta-subtitle">7-day free trial. No credit card required.</p>
+
+                <div class="install-command-block install-command-cta">
+                    <div class="install-command">
+                        <code>curl -sSL https://flowdeck.studio/install.sh | sh</code>
+                        <button class="copy-btn" data-copy="curl -sSL https://flowdeck.studio/install.sh | sh" aria-label="Copy install command">
+                            <i class="fas fa-copy"></i>
+                            <span class="copy-tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

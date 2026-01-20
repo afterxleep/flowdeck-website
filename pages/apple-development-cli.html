@@ -1,0 +1,220 @@
+---
+layout: default
+title: Apple Development CLI for iOS and macOS
+description: "Terminal-first Apple development CLI for build, run, test, simulators, devices, and logs with one tool."
+permalink: /apple-development-cli/
+body_class: home-page xcodebuild-page
+---
+
+<main>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <div class="container">
+            <a href="{{ site.baseurl }}/">FlowDeck CLI</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="{{ site.baseurl }}/workflows/">Workflows</a>
+            <span class="breadcrumb-sep">/</span>
+            <span>Apple Development CLI</span>
+        </div>
+    </nav>
+
+    <section class="xcodebuild-hero" aria-labelledby="hero-title">
+        <div class="container">
+            <header class="xcodebuild-hero-header">
+                <h1 id="hero-title" class="xcodebuild-hero-title">Apple development CLI for iOS and macOS</h1>
+                <p class="xcodebuild-hero-subtitle">The entire Apple build loop, one tool.</p>
+            </header>
+            <div class="xcodebuild-hero-content">
+                <p class="xcodebuild-hero-lead">FlowDeck runs <code>xcodebuild</code> under the hood and wraps everything around it: build, run, test, simulators, devices, and logs. Same commands in terminal, CI, or your editor.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="xcodebuild-problem" aria-labelledby="problem-title">
+        <div class="container">
+            <header>
+                <h2 id="problem-title" class="section-title">The Apple build loop is fragmented</h2>
+                <p class="section-subtitle">You end up gluing it together yourself.</p>
+            </header>
+
+            <div class="problem-content">
+                <p class="problem-lead">A typical workflow needs:</p>
+                <ul class="problem-list">
+                    <li><code>xcodebuild</code> to compile</li>
+                    <li><code>xcrun simctl</code> to manage simulators</li>
+                    <li><code>xcrun devicectl</code> to run on devices</li>
+                    <li><code>log stream</code> commands to see OSLog output</li>
+                    <li>Test flags that change every year</li>
+                    <li>Regex to parse the output</li>
+                </ul>
+                <p class="problem-conclusion">That is not a workflow. <strong>That is duct tape.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="xcodebuild-sidebyside" aria-labelledby="sidebyside-title">
+        <div class="container">
+            <header>
+                <h2 id="sidebyside-title" class="section-title">Side by side</h2>
+            </header>
+
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>What you are doing</th>
+                            <th class="col-apple">Apple tools</th>
+                            <th class="col-flowdeck">FlowDeck</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="task-cell">Discover schemes</td>
+                            <td class="apple-cell"><code>xcodebuild -list</code> and wait</td>
+                            <td class="flowdeck-cell"><code>flowdeck context</code></td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">Run on simulator</td>
+                            <td class="apple-cell">Find UDID, then <code>xcodebuild</code>, then <code>simctl install</code></td>
+                            <td class="flowdeck-cell"><code>flowdeck run -S "iPhone 16"</code></td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">Run on device</td>
+                            <td class="apple-cell"><code>xcrun devicectl</code> and manual UDIDs</td>
+                            <td class="flowdeck-cell"><code>flowdeck run -D "iPhone"</code></td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">Stream logs</td>
+                            <td class="apple-cell"><code>log stream</code> with predicates</td>
+                            <td class="flowdeck-cell"><code>flowdeck logs</code></td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">Run tests</td>
+                            <td class="apple-cell">Long <code>-only-testing</code> flags</td>
+                            <td class="flowdeck-cell"><code>flowdeck test --only LoginTests</code></td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">Machine output</td>
+                            <td class="apple-cell">Parse logs with regex</td>
+                            <td class="flowdeck-cell"><code>--json</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="xcodebuild-commands" aria-labelledby="commands-title">
+        <div class="container">
+            <header>
+                <h2 id="commands-title" class="section-title">One CLI for the whole loop</h2>
+            </header>
+
+            <div class="commands-comparison">
+                <div class="commands-card commands-apple">
+                    <h3>Apple's tooling:</h3>
+                    <div class="commands-list">
+                        <code>xcodebuild</code><code>xcrun</code><code>simctl</code><code>devicectl</code><code>log</code><code>xcresulttool</code><code>xctrace</code><span class="commands-ellipsis">...</span>
+                    </div>
+                </div>
+
+                <div class="commands-card commands-flowdeck">
+                    <h3>FlowDeck:</h3>
+                    <div class="commands-list commands-list-clean">
+                        <code>context</code><code>build</code><code>run</code><code>test</code><code>clean</code><code>simulator</code><code>device</code><code>logs</code>
+                    </div>
+                    <p class="commands-tagline">Learn once. Use everywhere.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="xcodebuild-output" aria-labelledby="output-title">
+        <div class="container">
+            <header>
+                <h2 id="output-title" class="section-title">Output you can actually use</h2>
+            </header>
+
+            <div class="output-comparison">
+                <div class="output-card output-apple">
+                    <div class="output-card-header">
+                        <span class="output-label">Unstructured output:</span>
+                    </div>
+                    <div class="output-card-body">
+                        <pre class="output-code"><code>CompileSwift normal arm64 /Users/dev/MyApp/View.swift
+/Users/dev/MyApp/View.swift:42:15: error: cannot convert value...
+...hundreds more lines...</code></pre>
+                        <p class="output-note">Good luck parsing that.</p>
+                    </div>
+                </div>
+
+                <div class="output-card output-flowdeck">
+                    <div class="output-card-header">
+                        <span class="output-label">FlowDeck output:</span>
+                    </div>
+                    <div class="output-card-body">
+                        <pre class="output-code output-code-json"><code>{
+  <span class="json-key">"type"</span>: <span class="json-val">"build_failed"</span>,
+  <span class="json-key">"file"</span>: <span class="json-val">"View.swift"</span>,
+  <span class="json-key">"line"</span>: <span class="json-val">42</span>,
+  <span class="json-key">"message"</span>: <span class="json-val">"cannot convert value"</span>
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <p class="output-tagline">Your CI parses it. Your AI agent understands it. <strong>You see what matters.</strong></p>
+        </div>
+    </section>
+
+    <section class="xcodebuild-unchanged" aria-labelledby="unchanged-title">
+        <div class="container">
+            <header>
+                <h2 id="unchanged-title" class="section-title">What does not change</h2>
+            </header>
+
+            <div class="unchanged-grid">
+                <div class="unchanged-item">
+                    <i class="fas fa-check"></i>
+                    <span>Your <code>.xcodeproj</code> and <code>.xcworkspace</code></span>
+                </div>
+                <div class="unchanged-item">
+                    <i class="fas fa-check"></i>
+                    <span>Your schemes and build settings</span>
+                </div>
+                <div class="unchanged-item">
+                    <i class="fas fa-check"></i>
+                    <span>Your signing configuration</span>
+                </div>
+                <div class="unchanged-item">
+                    <i class="fas fa-check"></i>
+                    <span>Your SPM dependencies</span>
+                </div>
+                <div class="unchanged-item">
+                    <i class="fas fa-check"></i>
+                    <span>Your test targets</span>
+                </div>
+            </div>
+
+            <p class="unchanged-tagline">FlowDeck reads your project. <strong>It does not own it.</strong></p>
+        </div>
+    </section>
+
+    <section class="xcodebuild-cta" aria-labelledby="cta-title">
+        <div class="container">
+            <div class="xcodebuild-cta-content">
+                <h2 id="cta-title" class="section-title">Try the Apple development CLI</h2>
+                <p class="cta-subtitle">7-day free trial. No credit card required.</p>
+
+                <div class="install-command-block install-command-cta">
+                    <div class="install-command">
+                        <code>curl -sSL https://flowdeck.studio/install.sh | sh</code>
+                        <button class="copy-btn" data-copy="curl -sSL https://flowdeck.studio/install.sh | sh" aria-label="Copy install command">
+                            <i class="fas fa-copy"></i>
+                            <span class="copy-tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

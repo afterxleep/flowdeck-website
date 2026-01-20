@@ -1,0 +1,205 @@
+---
+layout: default
+title: iOS Build Automation from the Terminal
+description: "Automate iOS builds, tests, and simulator runs with a single CLI and structured JSON output."
+permalink: /ios-build-automation/
+body_class: home-page xcodebuild-page
+---
+
+<main>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <div class="container">
+            <a href="{{ site.baseurl }}/">FlowDeck CLI</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="{{ site.baseurl }}/workflows/">Workflows</a>
+            <span class="breadcrumb-sep">/</span>
+            <span>iOS Build Automation</span>
+        </div>
+    </nav>
+
+    <section class="xcodebuild-hero" aria-labelledby="hero-title">
+        <div class="container">
+            <header class="xcodebuild-hero-header">
+                <h1 id="hero-title" class="xcodebuild-hero-title">Automate iOS builds, tests, and simulators</h1>
+                <p class="xcodebuild-hero-subtitle">Same commands locally and in CI.</p>
+            </header>
+            <div class="xcodebuild-hero-content">
+                <p class="xcodebuild-hero-lead">FlowDeck turns the iOS build loop into a stable command surface. Build, run, test, and collect logs with JSON output you can plug into automation.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="xcodebuild-problem" aria-labelledby="problem-title">
+        <div class="container">
+            <header>
+                <h2 id="problem-title" class="section-title">Automation usually means glue scripts</h2>
+                <p class="section-subtitle">You fight flags and parsers instead of shipping.</p>
+            </header>
+
+            <div class="problem-content">
+                <p class="problem-lead">Most pipelines rely on:</p>
+                <ul class="problem-list">
+                    <li>Custom destination strings per runner</li>
+                    <li>Simctl scripts to boot and erase</li>
+                    <li>Regex for errors and test output</li>
+                    <li>Manual log capture and filtering</li>
+                    <li>Different commands for local vs CI</li>
+                </ul>
+                <p class="problem-conclusion">That is not automation. <strong>That is babysitting.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="xcodebuild-sidebyside" aria-labelledby="sidebyside-title">
+        <div class="container">
+            <header>
+                <h2 id="sidebyside-title" class="section-title">Side by side</h2>
+            </header>
+
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Pipeline step</th>
+                            <th class="col-apple">Scripted flow</th>
+                            <th class="col-flowdeck">FlowDeck</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="task-cell">Pick destination</td>
+                            <td class="apple-cell">Construct a destination string</td>
+                            <td class="flowdeck-cell"><code>-S "iPhone 16"</code> or <code>-D "iPhone"</code></td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">Build and run</td>
+                            <td class="apple-cell">xcodebuild + simctl install + launch</td>
+                            <td class="flowdeck-cell"><code>flowdeck run</code></td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">Run tests</td>
+                            <td class="apple-cell">Long xcodebuild flags</td>
+                            <td class="flowdeck-cell"><code>flowdeck test --json</code></td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">Stream logs</td>
+                            <td class="apple-cell">Spawn log stream and parse</td>
+                            <td class="flowdeck-cell"><code>flowdeck logs</code></td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">Machine output</td>
+                            <td class="apple-cell">Regex and cleanup</td>
+                            <td class="flowdeck-cell"><code>--json</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="xcodebuild-commands" aria-labelledby="commands-title">
+        <div class="container">
+            <header>
+                <h2 id="commands-title" class="section-title">One command surface everywhere</h2>
+            </header>
+
+            <div class="commands-comparison">
+                <div class="commands-card commands-apple">
+                    <h3>Custom scripts:</h3>
+                    <div class="commands-list">
+                        <code>bash</code><code>simctl</code><code>xcpretty</code><code>log stream</code><code>awk</code><code>sed</code><span class="commands-ellipsis">...</span>
+                    </div>
+                </div>
+
+                <div class="commands-card commands-flowdeck">
+                    <h3>FlowDeck:</h3>
+                    <div class="commands-list commands-list-clean">
+                        <code>context</code><code>build</code><code>run</code><code>test</code><code>logs</code><code>clean</code>
+                    </div>
+                    <p class="commands-tagline">Same locally. Same in CI.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="xcodebuild-output" aria-labelledby="output-title">
+        <div class="container">
+            <header>
+                <h2 id="output-title" class="section-title">Automation-friendly output</h2>
+            </header>
+
+            <div class="output-comparison">
+                <div class="output-card output-apple">
+                    <div class="output-card-header">
+                        <span class="output-label">Unstructured output:</span>
+                    </div>
+                    <div class="output-card-body">
+                        <pre class="output-code"><code>** TEST FAILED **
+... 300 lines of logs ...
+Test Suite 'MyAppTests' failed</code></pre>
+                        <p class="output-note">Hard to parse. Easy to miss.</p>
+                    </div>
+                </div>
+
+                <div class="output-card output-flowdeck">
+                    <div class="output-card-header">
+                        <span class="output-label">FlowDeck output:</span>
+                    </div>
+                    <div class="output-card-body">
+                        <pre class="output-code output-code-json"><code>{
+  <span class="json-key">"type"</span>: <span class="json-val">"test_summary"</span>,
+  <span class="json-key">"passed"</span>: <span class="json-val">41</span>,
+  <span class="json-key">"failed"</span>: <span class="json-val">1</span>
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <p class="output-tagline">Automation should be deterministic. <strong>JSON makes it so.</strong></p>
+        </div>
+    </section>
+
+    <section class="xcodebuild-unchanged" aria-labelledby="unchanged-title">
+        <div class="container">
+            <header>
+                <h2 id="unchanged-title" class="section-title">What does not change</h2>
+            </header>
+
+            <div class="unchanged-grid">
+                <div class="unchanged-item">
+                    <i class="fas fa-check"></i>
+                    <span>Your <code>.xcodeproj</code> and <code>.xcworkspace</code></span>
+                </div>
+                <div class="unchanged-item">
+                    <i class="fas fa-check"></i>
+                    <span>Your signing and provisioning</span>
+                </div>
+                <div class="unchanged-item">
+                    <i class="fas fa-check"></i>
+                    <span>Your Xcode toolchain</span>
+                </div>
+            </div>
+
+            <p class="unchanged-tagline">FlowDeck automates the loop. <strong>It does not replace Xcode.</strong></p>
+        </div>
+    </section>
+
+    <section class="xcodebuild-cta" aria-labelledby="cta-title">
+        <div class="container">
+            <div class="xcodebuild-cta-content">
+                <h2 id="cta-title" class="section-title">Automate the iOS build loop</h2>
+                <p class="cta-subtitle">7-day free trial. No credit card required.</p>
+
+                <div class="install-command-block install-command-cta">
+                    <div class="install-command">
+                        <code>curl -sSL https://flowdeck.studio/install.sh | sh</code>
+                        <button class="copy-btn" data-copy="curl -sSL https://flowdeck.studio/install.sh | sh" aria-label="Copy install command">
+                            <i class="fas fa-copy"></i>
+                            <span class="copy-tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
