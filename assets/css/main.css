@@ -1154,23 +1154,39 @@ p {
 }
 
 @media (max-width: 480px) {
+    .container {
+        padding: 0 1rem;
+    }
+
     .hero-badges {
         flex-direction: column;
         align-items: center;
     }
 
     .hero-title {
-        font-size: 1.75rem;
-        line-height: 1.2;
+        font-size: 1.5rem;
+        line-height: 1.25;
     }
 
     .hero-title br {
         display: none;
     }
+    
+    .hero-subtitle {
+        font-size: 0.95rem;
+    }
+    
+    .hero-cta-title {
+        font-size: 1.1rem;
+    }
 
     .gradient-text {
         display: block;
         margin-top: 0.5rem;
+    }
+    
+    .gradient-text-pro {
+        display: inline;
     }
 
     .editor-name {
@@ -1194,6 +1210,14 @@ p {
 
     .code-window {
         max-width: 100%;
+    }
+    
+    .install-helper {
+        font-size: 0.8rem;
+    }
+    
+    .install-helper code {
+        font-size: 0.75rem;
     }
 }
 
@@ -6064,18 +6088,26 @@ p {
     }
 
     .install-command {
-        flex-wrap: wrap;
-        gap: 0.75rem;
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem;
     }
 
     .install-command code {
-        width: 100%;
-        font-size: 0.8rem;
+        font-size: 0.6rem;
+        overflow-x: auto;
+        white-space: nowrap;
+        flex: 1;
+        min-width: 0;
     }
 
     .copy-btn {
-        width: 100%;
-        justify-content: center;
+        flex-shrink: 0;
+        padding: 0.4rem 0.6rem;
+    }
+    
+    .copy-btn i {
+        font-size: 0.75rem;
     }
 
     .pricing-grid-cli-first {
@@ -9724,8 +9756,13 @@ p {
 }
 
 @media (max-width: 700px) {
+    .xcodebuild-teaser {
+        padding: 4rem 0;
+    }
+
     .xcodebuild-comparison-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
     }
 
     .comparison-arrow {
@@ -9734,12 +9771,38 @@ p {
     }
 
     .xcodebuild-teaser-title {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
+    }
+    
+    .xcodebuild-teaser-title code {
+        font-size: 0.85em;
+        padding: 0.1em 0.3em;
     }
 
     .xcodebuild-teaser-lead,
     .xcodebuild-teaser-sub {
-        font-size: 1rem;
+        font-size: 0.95rem;
+    }
+    
+    .xcodebuild-teaser-content {
+        margin-bottom: 2rem;
+    }
+    
+    .step-code {
+        font-size: 0.65rem;
+    }
+    
+    .flowdeck-command code {
+        font-size: 0.85rem;
+        padding: 0.6rem 1rem;
+    }
+    
+    .comparison-card-header {
+        padding: 0.75rem 1rem;
+    }
+    
+    .comparison-card-body {
+        padding: 1rem;
     }
 }
 
