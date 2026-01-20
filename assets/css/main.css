@@ -7940,34 +7940,23 @@ p {
     overflow: hidden;
 }
 
-/* Top accent line */
+/* Subtle top accent line */
 .ai-hero-card::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 2px;
+    height: 1px;
     background: linear-gradient(90deg, 
         transparent 0%,
-        #a78bfa 30%,
-        #a78bfa 70%,
+        rgba(167, 139, 250, 0.3) 30%,
+        rgba(167, 139, 250, 0.3) 70%,
         transparent 100%);
-    opacity: 0.5;
 }
 
 .ai-hero-glow {
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle at center, 
-        rgba(139, 92, 246, 0.08) 0%, 
-        transparent 50%);
-    opacity: 0.5;
-    pointer-events: none;
-    z-index: 0;
+    display: none;
 }
 
 .ai-hero-content {
