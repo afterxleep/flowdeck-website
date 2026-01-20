@@ -1,0 +1,234 @@
+---
+layout: default
+title: FlowDeck for Cursor & VS Code
+description: Build, run, debug, and test iOS apps directly from Cursor or VS Code editors. No Xcode switching required.
+permalink: /extension/
+body_class: home-page extension-page
+---
+
+<!-- Hero Section -->
+<main>
+    <section class="hero hero-cli" aria-labelledby="hero-title">
+        <div class="container">
+            <div class="hero-grid">
+                <header class="hero-content">
+                    <h1 id="hero-title" class="hero-title">The missing Apple IDE for <span class="gradient-text-pro">Cursor</span> & <span class="gradient-text-pro">VS Code</span>.</h1>
+                    <p class="hero-subtitle">Run builds, tests, simulators, and devices from your favorite editor.</p>
+
+                    <h2 class="hero-cta-title">Get the Extension</h2>
+                    <div class="extension-hero-buttons">
+                        <a href="cursor:extension/flowdeck.flowdeck" class="btn btn-primary btn-large">
+                            <img src="{{ site.baseurl }}/assets/images/cursor.png" alt="Cursor" width="20" height="20" class="btn-icon">
+                            Add to Cursor
+                        </a>
+                        <a href="vscode:extension/flowdeck.flowdeck" class="btn btn-dark btn-large">
+                            <img src="{{ site.baseurl }}/assets/images/code.png" alt="VS Code" width="20" height="20" class="btn-icon">
+                            Add to VS Code
+                        </a>
+                    </div>
+                    <p class="works-with-hero">Works with any VS Code-based editor: <span>Windsurf · Void · Trae · and more</span></p>
+                </header>
+
+                <figure class="hero-visual" aria-label="FlowDeck Extension Preview">
+                    <img src="{{ site.baseurl }}/assets/images/cursor-demo.png" alt="FlowDeck Extension in Cursor" class="extension-hero-img">
+                </figure>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Extension Features Section -->
+    <section id="extension" class="product-showcase-section product-showcase-cli cli-features-section" aria-labelledby="extension-title">
+        <div class="container">
+            <header class="cli-features-header">
+                <h2 id="extension-title" class="cli-features-title">Meet FlowDeck for Cursor & VS Code</h2>
+                <p class="cli-features-subtitle">iOS development without leaving your editor.</p>
+            </header>
+
+            <div class="cli-bento-grid">
+                <!-- Row 1: Build & Run Hero (2 cols) + Simulator (1 col) -->
+                <article class="cli-bento-card cli-bento-hero" data-accent="purple">
+                    <div class="cli-card-glow"></div>
+                    <div class="cli-card-content">
+                        <div class="cli-card-icon-badge">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="cli-card-code">
+                            <code><span class="cli-key">⌘⇧B</span> Build  <span class="cli-key">⌘⇧R</span> Run  <span class="cli-key">⌘⇧T</span> Test</code>
+                        </div>
+                        <div class="cli-card-body">
+                            <h3>Build & Run</h3>
+                            <p>One-click builds. Launch on simulator or device. See errors inline in your editor.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="cli-bento-card" data-accent="cyan">
+                    <div class="cli-card-glow"></div>
+                    <div class="cli-card-content">
+                        <div class="cli-card-code">
+                            <code><span class="cli-dim">Boot</span> · <span class="cli-dim">Shutdown</span> · <span class="cli-dim">Screenshot</span></code>
+                        </div>
+                        <div class="cli-card-body">
+                            <h3>Simulator Control</h3>
+                            <p>Manage simulators from the sidebar.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Row 2: Debug Hero (2 cols) + Logs (1 col) -->
+                <article class="cli-bento-card cli-bento-hero" data-accent="pink">
+                    <div class="cli-card-glow"></div>
+                    <div class="cli-card-content">
+                        <div class="cli-card-icon-badge">
+                            <i class="fas fa-bug"></i>
+                        </div>
+                        <div class="cli-card-code">
+                            <code><span class="cli-success">●</span> Breakpoint at line 42</code>
+                            <code class="cli-code-secondary">Variables · Call Stack · Watch</code>
+                        </div>
+                        <div class="cli-card-body">
+                            <h3>Debug</h3>
+                            <p>Set breakpoints, inspect variables, step through code. Full LLDB integration in your editor.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="cli-bento-card" data-accent="green">
+                    <div class="cli-card-glow"></div>
+                    <div class="cli-card-content">
+                        <div class="cli-card-code">
+                            <code><span class="cli-dim">[net]</span> GET /api <span class="cli-success">→ 200</span></code>
+                            <code class="cli-code-secondary"><span class="cli-dim">[app]</span> loaded user</code>
+                        </div>
+                        <div class="cli-card-body">
+                            <h3>Live Logs</h3>
+                            <p>Real-time console output. Filter, search.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Row 3: Three equal cards -->
+                <article class="cli-bento-card" data-accent="blue">
+                    <div class="cli-card-glow"></div>
+                    <div class="cli-card-content">
+                        <div class="cli-card-code">
+                            <code><span class="cli-success">✓</span> 24 passed · <span class="cli-error">✗</span> 1 failed</code>
+                        </div>
+                        <div class="cli-card-body">
+                            <h3>Test Explorer</h3>
+                            <p>Run unit tests, UI tests. See results inline.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="cli-bento-card" data-accent="amber">
+                    <div class="cli-card-glow"></div>
+                    <div class="cli-card-content">
+                        <div class="cli-card-code">
+                            <code><span class="cli-dim">Schemes</span> · <span class="cli-dim">Targets</span> · <span class="cli-dim">Configs</span></code>
+                        </div>
+                        <div class="cli-card-body">
+                            <h3>Project Discovery</h3>
+                            <p>Auto-detects your Xcode project. Works with SPM.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="cli-bento-card" data-accent="amber">
+                    <div class="cli-card-glow"></div>
+                    <div class="cli-card-content">
+                        <div class="cli-card-code">
+                            <code><span class="cli-error">⚠</span> Line 23: unused variable</code>
+                        </div>
+                        <div class="cli-card-body">
+                            <h3>Inline Errors</h3>
+                            <p>Build errors and warnings right where you code.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section-v3">
+        <div class="container">
+            <header class="pricing-header-v3">
+                <h2>The Best Pricing</h2>
+                <p>Free. That's it.</p>
+            </header>
+
+            <article class="pricing-card-v3">
+                <div class="pricing-card-content">
+                    <div class="pricing-main">
+                        <h3>FlowDeck Extension</h3>
+                        <div class="pricing-amount">
+                            <span class="price">$0</span>
+                        </div>
+                        <p class="pricing-trial">Just install and start building</p>
+                    </div>
+
+                    <div class="pricing-buttons">
+                        <a href="cursor:extension/flowdeck.flowdeck" class="btn btn-pro btn-large">
+                            <img src="{{ site.baseurl }}/assets/images/cursor.png" alt="Cursor" width="20" height="20" class="btn-icon">
+                            Add to Cursor
+                        </a>
+                        <a href="vscode:extension/flowdeck.flowdeck" class="btn btn-secondary btn-large">
+                            <img src="{{ site.baseurl }}/assets/images/code.png" alt="VS Code" width="20" height="20" class="btn-icon">
+                            Add to VS Code
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- CLI Upsell - The Real Deal -->
+    <section class="cli-promo-section">
+        <div class="container">
+            <div class="cli-promo">
+                <p class="cli-promo-eyebrow">Ready to go deeper?</p>
+                <h2 class="cli-promo-title">Meet FlowDeck <span>CLI</span></h2>
+                <p class="cli-promo-lead">The extension gets you started. The CLI makes you unstoppable.</p>
+                
+                <div class="cli-promo-features">
+                    <div class="cli-promo-feature">
+                        <i class="fas fa-robot"></i>
+                        <span>Built for AI agents</span>
+                    </div>
+                    <div class="cli-promo-feature">
+                        <i class="fas fa-bolt"></i>
+                        <span>Zero GUI overhead</span>
+                    </div>
+                    <div class="cli-promo-feature">
+                        <i class="fas fa-code"></i>
+                        <span>Full automation</span>
+                    </div>
+                </div>
+
+                <div class="cli-promo-cta">
+                    <a href="{{ site.baseurl }}/" class="btn btn-pro btn-large">
+                        <i class="fas fa-terminal"></i>
+                        Explore FlowDeck CLI
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Join Community -->
+    <section class="join-beta" aria-labelledby="join-title">
+        <div class="container">
+            <header>
+                <h2 id="join-title" class="section-title">Join the Community</h2>
+                <p class="section-subtitle">Share workflows, get help, shape what comes next.</p>
+            </header>
+
+            <div style="text-align: center;">
+                <button class="btn btn-primary btn-large open-signup">Join the Community</button>
+                <p style="margin-top: 1rem; color: #a1a1aa; font-size: 0.9rem;">Get help from the developer directly. Share feedback and feature ideas.</p>
+            </div>
+        </div>
+    </section>
+</main>

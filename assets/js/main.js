@@ -940,3 +940,4 @@ document.addEventListener('DOMContentLoaded', () => {
         video.addEventListener('loadedmetadata', setPreviewFrame, { once: true });
     }
 });
+
