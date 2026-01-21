@@ -5,6 +5,7 @@ description: "Apple development CLI. Finally. Builds, tests, simulators, devices
 url: "https://flowdeck.studio"
 baseurl: ""
 lang: en_US
+image: /assets/images/og-image.jpg
 
 # Author/Organization
 author:
@@ -50,11 +51,12 @@ defaults:
     values:
       layout: "post"
       author: "Daniel"
-      image: /assets/images/logo.png
+      image: /assets/images/og-image.jpg
   - scope:
       path: "pages"
     values:
       layout: "page"
+      image: /assets/images/og-image.jpg
 
 # Plugins
 plugins:
