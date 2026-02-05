@@ -1,0 +1,269 @@
+---
+layout: default
+title: FlowDeck vs Xcode 26.3 Agentic Coding
+description: "Compare FlowDeck CLI with Xcode 26.3's agentic coding features. Terminal freedom vs IDE lock-in for AI-assisted iOS development."
+permalink: /vs-xcode-agents/
+body_class: home-page xcodebuild-page
+---
+
+<main>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <div class="container">
+            <a href="{{ site.baseurl }}/">FlowDeck CLI</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="{{ site.baseurl }}/workflows/">Workflows</a>
+            <span class="breadcrumb-sep">/</span>
+            <span>vs Xcode Agents</span>
+        </div>
+    </nav>
+
+    <section class="xcodebuild-hero" aria-labelledby="hero-title">
+        <div class="container">
+            <header class="xcodebuild-hero-header">
+                <h1 id="hero-title" class="xcodebuild-hero-title">FlowDeck vs Xcode 26.3 Agentic Coding</h1>
+                <p class="xcodebuild-hero-subtitle">Same agents. Different philosophy.</p>
+            </header>
+            <div class="xcodebuild-hero-content">
+                <p class="xcodebuild-hero-lead">Xcode 26.3 brings Claude and Codex into Apple's IDE. FlowDeck lets them run from your terminal, your editor, your workflow. One locks you in. The other keeps you free.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="xcodebuild-problem" aria-labelledby="problem-title">
+        <div class="container">
+            <header>
+                <h2 id="problem-title" class="section-title">Apple's agents live inside Xcode</h2>
+                <p class="section-subtitle">That is the tradeoff.</p>
+            </header>
+
+            <div class="problem-content">
+                <p class="problem-lead">Xcode 26.3 is a genuine step forward. Agents can build, test, and verify their work visually. But everything happens inside Xcode:</p>
+                <ul class="problem-list">
+                    <li>Claude and Codex only work from Xcode's sidebar</li>
+                    <li>No terminal access for agents</li>
+                    <li>No integration with Claude Code, Codex CLI, or other tools</li>
+                    <li>Visual verification limited to Xcode Previews</li>
+                    <li>Your editor choice does not matter</li>
+                </ul>
+                <p class="problem-conclusion">Great for Xcode users. <strong>Not for everyone else.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="xcodebuild-sidebyside" aria-labelledby="sidebyside-title">
+        <div class="container">
+            <header>
+                <h2 id="sidebyside-title" class="section-title">Side by side</h2>
+            </header>
+
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Capability</th>
+                            <th class="col-apple">Xcode 26.3</th>
+                            <th class="col-flowdeck">FlowDeck</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="task-cell">Agent providers</td>
+                            <td class="apple-cell">Claude, Codex (built-in)</td>
+                            <td class="flowdeck-cell">Any terminal agent</td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">Editor choice</td>
+                            <td class="apple-cell">Xcode only</td>
+                            <td class="flowdeck-cell">VS Code, Cursor, Neovim, any</td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">Build and test</td>
+                            <td class="apple-cell">Through Xcode GUI</td>
+                            <td class="flowdeck-cell"><code>flowdeck build</code> / <code>flowdeck test</code></td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">Output format</td>
+                            <td class="apple-cell">Xcode transcript</td>
+                            <td class="flowdeck-cell">Structured JSON</td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">Visual verification</td>
+                            <td class="apple-cell">Xcode Previews snapshots</td>
+                            <td class="flowdeck-cell"><code>flowdeck ui screenshot</code></td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">UI automation</td>
+                            <td class="apple-cell">View only</td>
+                            <td class="flowdeck-cell">Tap, swipe, scroll, pinch</td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">Log streaming</td>
+                            <td class="apple-cell">Console app</td>
+                            <td class="flowdeck-cell"><code>flowdeck logs</code></td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">Simulator control</td>
+                            <td class="apple-cell">GUI-based</td>
+                            <td class="flowdeck-cell"><code>flowdeck simulator</code></td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">Works with Claude Code</td>
+                            <td class="apple-cell">No</td>
+                            <td class="flowdeck-cell">Yes</td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">Works with Codex CLI</td>
+                            <td class="apple-cell">No</td>
+                            <td class="flowdeck-cell">Yes</td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">CI/CD ready</td>
+                            <td class="apple-cell">Requires Xcode GUI</td>
+                            <td class="flowdeck-cell">Headless, scriptable</td>
+                        </tr>
+                        <tr>
+                            <td class="task-cell">Runs locally</td>
+                            <td class="apple-cell">Agent calls require internet</td>
+                            <td class="flowdeck-cell">All commands run locally</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="xcodebuild-commands" aria-labelledby="commands-title">
+        <div class="container">
+            <header>
+                <h2 id="commands-title" class="section-title">Two approaches to agentic iOS development</h2>
+            </header>
+
+            <div class="commands-comparison">
+                <div class="commands-card commands-apple">
+                    <h3>Xcode 26.3:</h3>
+                    <div class="commands-list">
+                        <code>Open Xcode</code><code>Agent sidebar</code><code>Type prompt</code><code>Watch transcript</code><code>Review in Previews</code>
+                    </div>
+                    <p class="commands-tagline" style="color: #a1a1aa; margin-top: 1rem;">GUI-first. Agent-in-IDE.</p>
+                </div>
+
+                <div class="commands-card commands-flowdeck">
+                    <h3>FlowDeck:</h3>
+                    <div class="commands-list commands-list-clean">
+                        <code>claude</code><code>flowdeck build</code><code>flowdeck test --json</code><code>flowdeck ui screenshot</code>
+                    </div>
+                    <p class="commands-tagline">Terminal-first. Agent-agnostic.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="xcodebuild-output" aria-labelledby="output-title">
+        <div class="container">
+            <header>
+                <h2 id="output-title" class="section-title">Why terminal agents need FlowDeck</h2>
+            </header>
+
+            <div class="output-comparison">
+                <div class="output-card output-apple">
+                    <div class="output-card-header">
+                        <span class="output-label">Xcode 26.3 agent loop:</span>
+                    </div>
+                    <div class="output-card-body">
+                        <pre class="output-code"><code>Agent writes code
+Agent clicks Build in Xcode
+Agent reads transcript
+Agent checks Preview snapshot
+Agent iterates...</code></pre>
+                        <p class="output-note">Works. But only inside Xcode.</p>
+                    </div>
+                </div>
+
+                <div class="output-card output-flowdeck">
+                    <div class="output-card-header">
+                        <span class="output-label">FlowDeck agent loop:</span>
+                    </div>
+                    <div class="output-card-body">
+                        <pre class="output-code output-code-json"><code><span class="json-comment"># Claude Code / Codex CLI / any agent</span>
+$ flowdeck build --json
+{<span class="json-key">"success"</span>: <span class="json-val">true</span>}
+
+$ flowdeck run && flowdeck ui screenshot
+{<span class="json-key">"path"</span>: <span class="json-val">".flowdeck/ui/latest.png"</span>}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <p class="output-tagline">Claude Code, Codex CLI, OpenCode, Aider, any terminal agent can use FlowDeck today.</p>
+        </div>
+    </section>
+
+    <section class="xcodebuild-unchanged" aria-labelledby="unchanged-title">
+        <div class="container">
+            <header>
+                <h2 id="unchanged-title" class="section-title">When to use which</h2>
+            </header>
+
+            <div class="unchanged-grid" style="grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+                <div class="unchanged-item" style="flex-direction: column; align-items: flex-start; gap: 0.75rem;">
+                    <span style="font-weight: 600; color: #fff;">Use Xcode 26.3 if you:</span>
+                    <ul style="list-style: disc; padding-left: 1.5rem; color: #a1a1aa; line-height: 1.8;">
+                        <li>Already live in Xcode</li>
+                        <li>Want Apple's integrated experience</li>
+                        <li>Prefer GUI-based workflows</li>
+                        <li>Only need SwiftUI Previews verification</li>
+                    </ul>
+                </div>
+                <div class="unchanged-item" style="flex-direction: column; align-items: flex-start; gap: 0.75rem;">
+                    <span style="font-weight: 600; color: #fff;">Use FlowDeck if you:</span>
+                    <ul style="list-style: disc; padding-left: 1.5rem; color: #a1a1aa; line-height: 1.8;">
+                        <li>Work from the terminal</li>
+                        <li>Use Claude Code, Codex CLI, or similar</li>
+                        <li>Want editor freedom (VS Code, Cursor, Neovim)</li>
+                        <li>Need real UI automation (tap, swipe)</li>
+                        <li>Run CI pipelines headlessly</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p class="unchanged-tagline" style="margin-top: 2rem;">Different tools for different workflows. <strong>Choose what fits yours.</strong></p>
+        </div>
+    </section>
+
+    <section class="xcodebuild-problem" aria-labelledby="together-title" style="background: linear-gradient(180deg, rgba(59, 130, 246, 0.05) 0%, transparent 100%);">
+        <div class="container">
+            <header>
+                <h2 id="together-title" class="section-title">Or use both</h2>
+            </header>
+
+            <div class="problem-content">
+                <p class="problem-lead">FlowDeck does not compete with Xcode. It extends what is possible outside of it.</p>
+                <ul class="problem-list" style="list-style: none; padding: 0;">
+                    <li><i class="fas fa-check" style="color: #22c55e; margin-right: 0.75rem;"></i>Use Xcode 26.3 agents for UI design and SwiftUI iteration</li>
+                    <li><i class="fas fa-check" style="color: #22c55e; margin-right: 0.75rem;"></i>Use FlowDeck + Claude Code for backend logic and tests</li>
+                    <li><i class="fas fa-check" style="color: #22c55e; margin-right: 0.75rem;"></i>Use FlowDeck in CI for automated builds and verification</li>
+                </ul>
+                <p class="problem-conclusion">The best workflow is the one you actually use.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="xcodebuild-cta" aria-labelledby="cta-title">
+        <div class="container">
+            <div class="xcodebuild-cta-content">
+                <h2 id="cta-title" class="section-title">Give your terminal agents the iOS workflow</h2>
+                <p class="cta-subtitle">7-day free trial. No credit card required.</p>
+
+                <div class="install-command-block install-command-cta">
+                    <div class="install-command">
+                        <code>curl -sSL https://flowdeck.studio/install.sh | sh</code>
+                        <button class="copy-btn" data-copy="curl -sSL https://flowdeck.studio/install.sh | sh" aria-label="Copy install command">
+                            <i class="fas fa-copy"></i>
+                            <span class="copy-tooltip">Copied!</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
