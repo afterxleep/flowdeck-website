@@ -8,6 +8,19 @@
     box-sizing: border-box;
 }
 
+/* Accessibility - Screen reader only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 /* Accessibility - Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
@@ -4134,6 +4147,21 @@ p {
     flex-wrap: wrap;
 }
 
+.hero-team-link {
+    width: 100%;
+    font-size: 0.85rem;
+    color: #71717a;
+    margin: 0.25rem 0 0;
+}
+
+.hero-team-link a {
+    color: #a78bfa;
+}
+
+.hero-team-link a:hover {
+    color: #c4b5fd;
+}
+
 .hero-cta-title {
     font-size: 1.45rem;
     font-weight: 600;
@@ -4663,7 +4691,7 @@ p {
 }
 
 .pricing-features li {
-    padding: 0.75rem 0;
+    padding: 0.25rem 0;
     color: #e4e4e7;
     font-size: 1.05rem;
     display: flex;
@@ -4672,9 +4700,7 @@ p {
 }
 
 .pricing-features li::before {
-    content: "✓";
-    color: #10b981;
-    font-weight: 600;
+    display: none;
 }
 
 .pricing-link {
@@ -8417,11 +8443,18 @@ p {
     margin: 0;
 }
 
-.pricing-card-v3 {
-    max-width: 600px;
+.pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    max-width: 780px;
     margin: 0 auto;
-    background: linear-gradient(165deg, 
-        rgba(28, 28, 32, 0.95) 0%, 
+    align-items: start;
+}
+
+.pricing-card-v3 {
+    background: linear-gradient(165deg,
+        rgba(28, 28, 32, 0.95) 0%,
         rgba(20, 20, 24, 0.98) 100%);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 20px;
@@ -8434,20 +8467,50 @@ p {
     transform: translateY(-2px);
 }
 
+.pricing-card-teams {
+    border-color: rgba(139, 92, 246, 0.2);
+}
+
+.pricing-card-teams:hover {
+    border-color: rgba(139, 92, 246, 0.4);
+}
+
 .pricing-card-content {
-    padding: 2.5rem;
+    padding: 2.25rem 2rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.pricing-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #a1a1aa;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 0.25rem 0.7rem;
+    border-radius: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.pricing-label-teams {
+    color: #c4b5fd;
+    background: rgba(139, 92, 246, 0.12);
 }
 
 .pricing-main {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .pricing-main h3 {
-    font-size: 1.35rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: #fff;
     margin: 0 0 1rem;
+    padding-top: 0;
 }
 
 .pricing-amount {
@@ -8458,8 +8521,14 @@ p {
     margin-bottom: 0.75rem;
 }
 
+.pricing-amount .price-from {
+    font-size: 0.95rem;
+    color: #71717a;
+    margin-right: 0.15rem;
+}
+
 .pricing-amount .price {
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: 700;
     color: #fff;
     letter-spacing: -0.03em;
@@ -8467,33 +8536,54 @@ p {
 }
 
 .pricing-amount .period {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     color: #71717a;
 }
 
 .pricing-note {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: #a1a1aa;
-    margin: 0 0 0.35rem;
+    margin: 0 0 0.25rem;
 }
 
 .pricing-trial {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: #a78bfa;
     margin: 0;
     font-weight: 500;
 }
 
+.pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.75rem;
+    display: grid;
+    gap: 0.6rem;
+}
+
+.pricing-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    color: #a1a1aa;
+}
+
+.pricing-features li i {
+    font-size: 0.7rem;
+    color: #a78bfa;
+    flex-shrink: 0;
+}
+
 .pricing-buttons {
     display: flex;
-    gap: 1rem;
     justify-content: center;
-    flex-wrap: wrap;
+    margin-top: auto;
 }
 
 .pricing-buttons .btn {
     white-space: nowrap;
-    min-width: 180px;
+    width: 100%;
 }
 
 .btn-outline {
@@ -8511,21 +8601,22 @@ p {
     .pricing-section-v3 {
         padding: 5rem 0;
     }
-    
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+
     .pricing-card-content {
         padding: 2rem 1.5rem;
     }
-    
+
     .pricing-amount .price {
-        font-size: 3rem;
+        font-size: 2.5rem;
     }
-    
-    .pricing-buttons {
-        flex-direction: column;
-    }
-    
-    .pricing-buttons .btn {
-        max-width: 100%;
+
+    .teams-hero {
+        padding: calc(80px + 3rem) 0 2rem;
     }
 }
 
@@ -8539,6 +8630,278 @@ p {
     margin-left: 0.5rem;
     font-weight: 500;
     vertical-align: middle;
+}
+
+/* ============================================
+   Teams Page
+   ============================================ */
+
+.teams-hero {
+    padding: calc(80px + 5rem) 0 4rem;
+    text-align: center;
+    background:
+        radial-gradient(ellipse 100% 70% at 50% 0%, rgba(139, 92, 246, 0.18), transparent 60%),
+        radial-gradient(ellipse 80% 50% at 40% 5%, rgba(59, 130, 246, 0.12), transparent 50%),
+        #0a0a0a;
+}
+
+.teams-hero-header {
+    max-width: 640px;
+    margin: 0 auto 3rem;
+}
+
+.teams-eyebrow {
+    margin: 0 0 1rem;
+    color: #a78bfa;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+}
+
+.teams-hero h1 {
+    margin: 0;
+    font-size: clamp(2.8rem, 6vw, 4rem);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    padding-top: 0;
+}
+
+.teams-hero-subtitle {
+    margin: 1.25rem 0 0;
+    color: #a1a1aa;
+    font-size: 1.15rem;
+    line-height: 1.6;
+}
+
+/* --- Tier Grid --- */
+.teams-tier-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.teams-tier-card {
+    position: relative;
+    background: linear-gradient(165deg, rgba(28, 28, 32, 0.95), rgba(20, 20, 24, 0.98));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 1.75rem 1.25rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.teams-tier-card:hover {
+    border-color: rgba(255, 255, 255, 0.18);
+    transform: translateY(-3px);
+    color: inherit;
+}
+
+.teams-tier-popular {
+    border-color: rgba(139, 92, 246, 0.4);
+    background: linear-gradient(165deg, rgba(139, 92, 246, 0.08), rgba(20, 20, 24, 0.98));
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.1);
+}
+
+.teams-tier-popular:hover {
+    border-color: rgba(139, 92, 246, 0.6);
+}
+
+.teams-tier-badge {
+    position: absolute;
+    top: -0.7rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #8b5cf6, #a855f7);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+}
+
+.teams-tier-size {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.teams-tier-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #71717a;
+    margin-top: 0.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+}
+
+.teams-tier-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #e4e4e7;
+    letter-spacing: -0.02em;
+}
+
+.teams-tier-period {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #71717a;
+}
+
+.teams-tier-discount {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: #34d399;
+    background: rgba(52, 211, 153, 0.1);
+    padding: 0.2rem 0.55rem;
+    border-radius: 1rem;
+    margin-top: 0.5rem;
+}
+
+/* --- Trial note + includes --- */
+.teams-trial-note {
+    text-align: center;
+    color: #71717a;
+    font-size: 0.9rem;
+    margin-top: 2.5rem;
+}
+
+.teams-trial-note a {
+    color: #a78bfa;
+}
+
+.teams-includes {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0 0;
+    flex-wrap: wrap;
+}
+
+.teams-includes li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #a1a1aa;
+}
+
+.teams-includes li i {
+    color: #a78bfa;
+    font-size: 0.7rem;
+}
+
+/* --- Perks strip --- */
+.teams-perks {
+    padding: 0 0 3rem;
+    background: #0a0a0a;
+}
+
+.teams-perks-strip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(165deg, rgba(139, 92, 246, 0.06), rgba(20, 20, 24, 0.6));
+    border: 1px solid rgba(139, 92, 246, 0.12);
+    border-radius: 14px;
+}
+
+.teams-perk {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+    color: #e4e4e7;
+    white-space: nowrap;
+}
+
+.teams-perk i {
+    color: #a78bfa;
+    font-size: 0.85rem;
+}
+
+.teams-perk strong {
+    color: #fff;
+}
+
+.teams-perk-divider {
+    width: 1px;
+    height: 1.2rem;
+    background: rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .teams-perks-strip {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem;
+    }
+    .teams-perk-divider {
+        width: 3rem;
+        height: 1px;
+    }
+}
+
+/* --- Teams FAQ --- */
+.teams-faq {
+    padding: 4rem 0 6rem;
+    background: #0a0a0a;
+}
+
+.teams-faq-heading {
+    text-align: center;
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    font-weight: 700;
+    margin: 0 0 2rem;
+    letter-spacing: -0.02em;
+}
+
+.teams-faq .faq-accordion {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* --- Teams Responsive --- */
+@media (max-width: 600px) {
+    .teams-hero {
+        padding: calc(80px + 3rem) 0 4rem;
+    }
+    .teams-tier-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+    }
+    .teams-tier-size {
+        font-size: 2rem;
+    }
+    .teams-tier-price {
+        font-size: 1.25rem;
+    }
+    .teams-includes {
+        gap: 1rem 1.5rem;
+    }
 }
 
 /* Two Products Section V2 */

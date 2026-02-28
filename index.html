@@ -16,6 +16,7 @@ body_class: home-page
                         <a href="/cli/purchase/" class="btn btn-pro btn-large">
                             Try Free &mdash; $59/yr after trial
                         </a>
+                        <p class="hero-team-link">Looking for a <a href="/teams/">team plan</a>?</p>
                     </div>
                 </header>
 
@@ -338,29 +339,64 @@ body_class: home-page
         <div class="container">
             <header class="pricing-header-v3">
                 <h2>Simple Pricing</h2>
-                <p>One tool. One price. Start free.</p>
+                <p>One tool. Start free. Scale when you're ready.</p>
             </header>
 
-            <article class="pricing-card-v3">
-                <div class="pricing-card-content">
-                    <div class="pricing-main">
-                        <h3>FlowDeck CLI</h3>
-                        <div class="pricing-amount">
-                            <span class="price">$59</span>
-                            <span class="period">/year</span>
+            <div class="pricing-grid">
+                <article class="pricing-card-v3">
+                    <div class="pricing-card-content">
+                        <div class="pricing-main">
+                            <span class="pricing-label">Personal</span>
+                            <h3>FlowDeck CLI</h3>
+                            <div class="pricing-amount">
+                                <span class="price">$59</span>
+                                <span class="period">/year</span>
+                            </div>
+                            <p class="pricing-note">All updates included</p>
+                            <p class="pricing-trial">7-day free trial</p>
                         </div>
-                        <p class="pricing-note">Personal Use · All updates included</p>
-                        <p class="pricing-trial">7-day free trial</p>
-                    </div>
 
-                    <div class="pricing-buttons">
-                        <a href="/cli/purchase/" class="btn btn-pro btn-large">
-                            Try Free &mdash; $59/yr after trial
-                        </a>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> Full CLI access</li>
+                            <li><i class="fas fa-check"></i> AI agent integrations</li>
+                            <li><i class="fas fa-check"></i> 2 machines per license</li>
+                        </ul>
+
+                        <div class="pricing-buttons">
+                            <a href="/cli/purchase/" class="btn btn-pro btn-large">
+                                Try Free &mdash; $59/yr after trial
+                            </a>
+                        </div>
                     </div>
-                </div>
-            </article>
-            <p class="pricing-team-note">For Team licenses &amp; Centralized billing please <a href="mailto:support@flowdeck.studio">Contact us</a>.</p>
+                </article>
+
+                <article class="pricing-card-v3 pricing-card-teams">
+                    <div class="pricing-card-content">
+                        <div class="pricing-main">
+                            <span class="pricing-label pricing-label-teams">Teams</span>
+                            <h3>FlowDeck for Teams</h3>
+                            <div class="pricing-amount">
+                                <span class="price">$179</span>
+                                <span class="period">/year</span>
+                            </div>
+                            <p class="pricing-note">3 to 10+ developers</p>
+                            <p class="pricing-trial">30-day free trial</p>
+                        </div>
+
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check"></i> Everything in Personal</li>
+                            <li><i class="fas fa-check"></i> Centralized billing</li>
+                            <li><i class="fas fa-check"></i> Priority support</li>
+                        </ul>
+
+                        <div class="pricing-buttons">
+                            <a href="{{ site.baseurl }}/teams/" class="btn btn-outline btn-large">
+                                See Team Plans
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
         </div>
     </section>
 
