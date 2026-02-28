@@ -8675,103 +8675,102 @@ p {
     line-height: 1.6;
 }
 
-/* --- Tier Grid --- */
-.teams-tier-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
-    max-width: 700px;
+/* --- Seat Picker --- */
+.teams-picker {
+    max-width: 480px;
     margin: 0 auto;
+    text-align: center;
 }
 
-.teams-tier-card {
-    position: relative;
-    background: linear-gradient(165deg, rgba(28, 28, 32, 0.95), rgba(20, 20, 24, 0.98));
+.teams-picker-tabs {
+    display: inline-flex;
+    background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    padding: 1.75rem 1.25rem;
-    text-align: center;
+    border-radius: 12px;
+    padding: 4px;
+    gap: 4px;
+    margin-bottom: 2rem;
+}
+
+.teams-tab {
+    position: relative;
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 10px;
+    background: transparent;
+    color: #a1a1aa;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: inherit;
+}
+
+.teams-tab:hover {
+    color: #e4e4e7;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.teams-tab-active {
+    background: rgba(139, 92, 246, 0.15);
+    color: #fff;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.1);
+}
+
+.teams-tab-active:hover {
+    background: rgba(139, 92, 246, 0.2);
+}
+
+.teams-tab-badge {
+    font-size: 0.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: linear-gradient(135deg, #8b5cf6, #a855f7);
+    color: #fff;
+    padding: 0.15rem 0.5rem;
+    border-radius: 0.75rem;
+}
+
+.teams-picker-display {
     display: flex;
     flex-direction: column;
     align-items: center;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    cursor: pointer;
 }
 
-.teams-tier-card:hover {
-    border-color: rgba(255, 255, 255, 0.18);
-    transform: translateY(-3px);
-    color: inherit;
+.teams-picker-price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.2rem;
 }
 
-.teams-tier-popular {
-    border-color: rgba(139, 92, 246, 0.4);
-    background: linear-gradient(165deg, rgba(139, 92, 246, 0.08), rgba(20, 20, 24, 0.98));
-    box-shadow: 0 0 40px rgba(139, 92, 246, 0.1);
-}
-
-.teams-tier-popular:hover {
-    border-color: rgba(139, 92, 246, 0.6);
-}
-
-.teams-tier-badge {
-    position: absolute;
-    top: -0.7rem;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(135deg, #8b5cf6, #a855f7);
-    color: #fff;
-    font-size: 0.7rem;
-    font-weight: 600;
-    padding: 0.25rem 0.75rem;
-    border-radius: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    white-space: nowrap;
-}
-
-.teams-tier-size {
-    display: block;
-    font-size: 2.5rem;
+.teams-picker-amount {
+    font-size: clamp(3rem, 6vw, 4rem);
     font-weight: 700;
     color: #fff;
+    letter-spacing: -0.04em;
     line-height: 1;
-    letter-spacing: -0.03em;
 }
 
-.teams-tier-label {
-    display: block;
-    font-size: 0.8rem;
-    color: #71717a;
-    margin-top: 0.2rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 1rem;
-}
-
-.teams-tier-price {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #e4e4e7;
-    letter-spacing: -0.02em;
-}
-
-.teams-tier-period {
-    font-size: 0.85rem;
-    font-weight: 400;
+.teams-picker-period {
+    font-size: 1.2rem;
     color: #71717a;
 }
 
-.teams-tier-discount {
-    display: inline-block;
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: #34d399;
-    background: rgba(52, 211, 153, 0.1);
-    padding: 0.2rem 0.55rem;
-    border-radius: 1rem;
-    margin-top: 0.5rem;
+.teams-picker-per-seat {
+    font-size: 0.9rem;
+    color: #a78bfa;
+    margin: 0.4rem 0 0;
+    font-weight: 500;
+}
+
+.teams-picker-cta {
+    margin-top: 1.75rem;
+    padding: 0.85rem 2.5rem;
+    font-size: 1.05rem;
 }
 
 /* --- Trial note + includes --- */
@@ -8889,18 +8888,11 @@ p {
     .teams-hero {
         padding: calc(80px + 3rem) 0 4rem;
     }
-    .teams-tier-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 0.75rem;
+    .teams-picker-tabs {
+        flex-direction: column;
     }
-    .teams-tier-size {
-        font-size: 2rem;
-    }
-    .teams-tier-price {
-        font-size: 1.25rem;
-    }
-    .teams-includes {
-        gap: 1rem 1.5rem;
+    .teams-picker-amount {
+        font-size: 2.5rem;
     }
 }
 
