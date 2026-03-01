@@ -1,0 +1,323 @@
+---
+layout: default
+title: "Welcome to FlowDeck for Teams - Get Started"
+description: "Thank you for your purchase. Get your team set up with FlowDeck CLI - distribute licenses, activate devices, and start building."
+permalink: /teams/welcome.html
+---
+
+<style>
+.thank-you-page {
+    min-height: 80vh;
+    padding: 6rem 0 4rem;
+}
+
+.thank-you-container {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.purchase-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(139, 92, 246, 0.15);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 20px;
+    color: #c084fc;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 2rem;
+}
+
+.thank-you-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #8b5cf6, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.thank-you-intro {
+    font-size: 1.15rem;
+    color: #a1a1aa;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+}
+
+.next-steps-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    text-align: left;
+}
+
+.next-steps-header {
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.steps-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: step-counter;
+}
+
+.step-item {
+    counter-increment: step-counter;
+    position: relative;
+    padding-left: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.step-item:last-child {
+    margin-bottom: 0;
+}
+
+.step-item::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 28px;
+    height: 28px;
+    background: rgba(139, 92, 246, 0.15);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #c084fc;
+}
+
+.step-title {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+}
+
+.step-desc {
+    color: #a1a1aa;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.code-snippet {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+    font-size: 0.9rem;
+    color: #e5e5e5;
+    display: block;
+    margin-top: 0.5rem;
+    overflow-x: auto;
+}
+
+.license-callout {
+    background: rgba(139, 92, 246, 0.08);
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2.5rem;
+    text-align: left;
+}
+
+.license-callout-title {
+    color: #c084fc;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.license-callout-text {
+    color: #a1a1aa;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0 0 0.75rem;
+}
+
+.license-callout-text:last-child {
+    margin-bottom: 0;
+}
+
+.license-callout a {
+    color: #3b82f6;
+    text-decoration: none;
+}
+
+.license-callout a:hover {
+    text-decoration: underline;
+}
+
+.support-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.support-icon {
+    color: #c084fc;
+    margin-bottom: 1rem;
+}
+
+.support-title {
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.support-desc {
+    color: #a1a1aa;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.support-box .btn {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .thank-you-page {
+        padding: 4rem 0 3rem;
+        min-height: auto;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .step-item {
+        padding-left: 2rem;
+    }
+
+    .step-item::before {
+        width: 24px;
+        height: 24px;
+        font-size: 0.75rem;
+    }
+
+    .code-snippet {
+        font-size: 0.8rem;
+        word-break: break-all;
+    }
+}
+
+/* Ensure scrolling works */
+html, body {
+    overflow-x: hidden;
+    overflow-y: auto !important;
+}
+</style>
+
+<div class="thank-you-page">
+    <div class="container">
+        <div class="thank-you-container">
+
+            <div class="purchase-badge">
+                <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                Purchase Complete
+            </div>
+
+            <h1 class="thank-you-title">Welcome to FlowDeck for Teams!</h1>
+
+            <p class="thank-you-intro">
+                Your team licenses are ready. Here's how to get everyone set up.
+            </p>
+
+            <div class="next-steps-box">
+                <div class="next-steps-header">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                    Getting Started
+                </div>
+
+                <ol class="steps-list">
+                    <li class="step-item">
+                        <div class="step-title">Share Your License Key</div>
+                        <div class="step-desc">You'll find your license key in the order confirmation email. Share it with your team members — each device activated with the key will count as one seat.</div>
+                    </li>
+
+                    <li class="step-item">
+                        <div class="step-title">Install FlowDeck CLI</div>
+                        <div class="step-desc">Each team member runs this command in their terminal:</div>
+                        <code class="code-snippet">curl -sSL https://flowdeck.studio/install.sh | sh</code>
+                    </li>
+
+                    <li class="step-item">
+                        <div class="step-title">Activate & Start Building</div>
+                        <div class="step-desc">Run interactive mode to activate with the shared license key:</div>
+                        <code class="code-snippet">flowdeck -i</code>
+                    </li>
+
+                    <li class="step-item">
+                        <div class="step-title">Read the Docs</div>
+                        <div class="step-desc">Learn all the features and commands at <a href="https://docs.flowdeck.studio/cli/introduction" target="_blank" rel="noopener" style="color: #3b82f6; text-decoration: none;">docs.flowdeck.studio</a></div>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="license-callout">
+                <div class="license-callout-title">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>
+                    </svg>
+                    Managing Your Licenses
+                </div>
+                <p class="license-callout-text">
+                    Each device activated with your license key counts against your seat quota. You can view and manage active devices from your <a href="https://app.lemonsqueezy.com/my-orders" target="_blank" rel="noopener">orders page</a> — deactivate a device anytime to free up a seat.
+                </p>
+                <p class="license-callout-text">
+                    Need more seats? You can upgrade your plan at any time from the same page.
+                </p>
+            </div>
+
+            <div class="support-box">
+                <div class="support-icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/>
+                    </svg>
+                </div>
+                <div class="support-title">Priority Support</div>
+                <p class="support-desc">Team plans include priority support with less than 24-hour response times. Reach out anytime using the email address associated with your purchase.</p>
+                <a href="mailto:support@flowdeck.studio" class="btn btn-primary btn-large btn-block">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="margin-right: 8px; vertical-align: middle;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                    Contact Support
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
